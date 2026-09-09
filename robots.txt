@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://alibakhshizadah-byte.github.io/CapCutAd/sitemap.xml
+Sitemap: https://alibakhshizadah-byte.github.io/CapCutAcademyAd/sitemap.xml
