@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#050817">
+
+<title>CAPCUT ACADEMY | کپ‌کات آکادمی</title>
+
+<style>
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+}
+
+body{
+    font-family:Tahoma,Arial,sans-serif;
+    background:
+      radial-gradient(circle at 20% 10%,rgba(0,229,255,.18),transparent 28%),
+      radial-gradient(circle at 85% 20%,rgba(155,0,255,.20),transparent 30%),
+      radial-gradient(circle at 50% 90%,rgba(0,110,255,.15),transparent 35%),
+      #03050d;
+    color:#fff;
+    min-height:100vh;
+    overflow-x:hidden;
+}
+
+/* نورهای پس زمینه */
+body:before,
+body:after{
+    content:"";
+    position:fixed;
+    width:320px;
+    height:320px;
+    border-radius:50%;
+    filter:blur(100px);
+    opacity:.22;
+    z-index:-1;
+    animation:float 7s infinite alternate ease-in-out;
+}
+
+body:before{
+    background:#00d9ff;
+    top:5%;
+    left:-160px;
+}
+
+body:after{
+    background:#8b00ff;
+    right:-160px;
+    bottom:10%;
+    animation-delay:2s;
+}
+
+@keyframes float{
+    from{transform:translateY(-30px)}
+    to{transform:translateY(50px)}
+}
+
+.container{
+    width:100%;
+    max-width:520px;
+    margin:auto;
+    padding:25px 16px 40px;
+}
+
+/* لوگو */
+.logo-area{
+    text-align:center;
+    margin-top:15px;
+}
+
+.logo-ring{
+    width:125px;
+    height:125px;
+    margin:auto;
+    padding:5px;
+    border-radius:50%;
+    background:linear-gradient(135deg,#00eaff,#762cff,#ff21cf);
+    box-shadow:
+      0 0 25px rgba(0,229,255,.55),
+      0 0 60px rgba(126,39,255,.25);
+    animation:pulse 3s infinite;
+}
+
+.logo{
+    width:100%;
+    height:100%;
+    border-radius:50%;
+    background:#f8f8f8;
+    color:#050505;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:40px;
+    font-weight:900;
+    letter-spacing:-5px;
+}
+
+@keyframes pulse{
+    50%{
+        box-shadow:
+        0 0 40px rgba(0,229,255,.75),
+        0 0 80px rgba(126,39,255,.4);
+    }
+}
+
+/* عنوان */
+.brand{
+    text-align:center;
+    margin-top:22px;
+}
+
+.brand h1{
+    font-size:31px;
+    font-weight:900;
+    letter-spacing:1px;
+    text-shadow:
+      0 0 12px rgba(0,229,255,.45),
+      0 0 30px rgba(155,0,255,.25);
+}
+
+.brand h1 span{
+    color:#00e5ff;
+}
+
+.brand h2{
+    font-size:22px;
+    margin-top:7px;
+    color:#f4c8ff;
+}
+
+.tagline{
+    margin-top:18px;
+    font-size:17px;
+    line-height:2;
+    color:#eee;
+}
+
+.tagline strong{
+    color:#00e5ff;
+}
+
+/* خط نور */
+.line{
+    width:80%;
+    height:2px;
+    margin:22px auto;
+    background:linear-gradient(90deg,transparent,#00e5ff,#b52cff,transparent);
+    box-shadow:0 0 15px #00e5ff;
+}
+
+/* کارت ها */
+.cards{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:12px;
+    margin-top:20px;
+}
+
+.card{
+    min-height:135px;
+    padding:17px 12px;
+    text-align:center;
+    border:1px solid rgba(0,229,255,.35);
+    border-radius:20px;
+    background:linear-gradient(
+        145deg,
+        rgba(15,30,55,.82),
+        rgba(20,10,45,.72)
+    );
+    backdrop-filter:blur(12px);
+    box-shadow:
+      inset 0 0 20px rgba(0,229,255,.03),
+      0 10px 30px rgba(0,0,0,.3);
+    transition:.3s;
+}
+
+.card:hover{
+    transform:translateY(-5px);
+    border-color:#00e5ff;
+}
+
+.icon{
+    font-size:30px;
+    margin-bottom:9px;
+}
+
+.card h3{
+    font-size:15px;
+    color:#00e5ff;
+    margin-bottom:8px;
+}
+
+.card p{
+    color:#bbb;
+    font-size:12px;
+    line-height:1.8;
+}
+
+/* بخش دعوت */
+.invite{
+    margin-top:25px;
+    padding:25px 18px;
+    border-radius:25px;
+    text-align:center;
+    background:
+      linear-gradient(135deg,
+      rgba(0,115,255,.18),
+      rgba(145,0,255,.18));
+    border:1px solid rgba(0,229,255,.35);
+    box-shadow:0 0 40px rgba(0,130,255,.1);
+}
+
+.invite h2{
+    font-size:23px;
+    margin-bottom:8px;
+}
+
+.invite p{
+    color:#bbb;
+    line-height:1.9;
+    font-size:14px;
+}
+
+/* دکمه */
+.join{
+    display:block;
+    margin-top:20px;
+    padding:17px 15px;
+    border-radius:17px;
+    text-decoration:none;
+    color:#fff;
+    font-size:19px;
+    font-weight:bold;
+    background:linear-gradient(100deg,#008cff,#00c8ff,#8d25ff);
+    background-size:200% 100%;
+    box-shadow:
+      0 8px 30px rgba(0,166,255,.3),
+      0 0 25px rgba(117,35,255,.2);
+    animation:buttonGlow 3s infinite;
+}
+
+@keyframes buttonGlow{
+    50%{
+        background-position:100% 0;
+        box-shadow:
+        0 10px 40px rgba(0,166,255,.45),
+        0 0 35px rgba(117,35,255,.3);
+    }
+}
+
+.join small{
+    display:block;
+    margin-top:5px;
+    opacity:.8;
+    font-size:11px;
+}
+
+/* لینک */
+.channel-link{
+    margin-top:13px;
+    padding:12px;
+    border-radius:14px;
+    background:rgba(0,0,0,.35);
+    border:1px solid rgba(255,255,255,.1);
+    font-size:11px;
+    color:#8eeeff;
+    direction:ltr;
+    word-break:break-all;
+}
+
+/* آمار */
+.stats{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:8px;
+    margin-top:20px;
+}
+
+.stat{
+    text-align:center;
+    padding:14px 5px;
+    border-radius:16px;
+    background:rgba(255,255,255,.035);
+    border:1px solid rgba(255,255,255,.08);
+}
+
+.stat strong{
+    display:block;
+    color:#00e5ff;
+    font-size:18px;
+}
+
+.stat span{
+    color:#aaa;
+    font-size:10px;
+    margin-top:5px;
+    display:block;
+}
+
+/* لیست */
+.list{
+    margin-top:25px;
+    padding:20px;
+    border-radius:20px;
+    background:rgba(255,255,255,.035);
+    border:1px solid rgba(255,255,255,.07);
+}
+
+.list h2{
+    text-align:center;
+    font-size:19px;
+    margin-bottom:15px;
+}
+
+.list div{
+    padding:9px 0;
+    font-size:13px;
+    color:#ddd;
+}
+
+.list div::first-letter{
+    color:#00e5ff;
+}
+
+/* اشتراک */
+.share{
+    width:100%;
+    border:1px solid rgba(0,229,255,.3);
+    background:rgba(0,229,255,.05);
+    color:#fff;
+    padding:14px;
+    border-radius:15px;
+    margin-top:12px;
+    font-size:14px;
+}
+
+/* فوتر */
+.footer{
+    text-align:center;
+    color:#666;
+    font-size:11px;
+    margin-top:28px;
+    line-height:2;
+}
+
+/* موبایل */
+@media(max-width:360px){
+    .brand h1{font-size:25px}
+    .brand h2{font-size:19px}
+    .cards{grid-template-columns:1fr}
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="logo-area">
+        <div class="logo-ring">
+            <div class="logo">CC</div>
+        </div>
+    </div>
+
+    <div class="brand">
+        <h1>CAPCUT <span>ACADEMY</span></h1>
+        <h2>کپ‌کات آکادمی</h2>
+
+        <div class="tagline">
+            از <strong>صفر</strong> تا <strong>حرفه‌ای</strong><br>
+            آموزش تدوین و ادیت حرفه‌ای با <strong>CapCut</strong>
+        </div>
+    </div>
+
+    <div class="line"></div>
+
+    <div class="cards">
+
+        <div class="card">
+            <div class="icon">🎬</div>
+            <h3>آموزش کاربردی</h3>
+            <p>
+                آموزش‌های ساده و مرحله‌به‌مرحله
+                برای ساخت ویدیوهای حرفه‌ای
+            </p>
+        </div>
+
+        <div class="card">
+            <div class="icon">⚡</div>
+            <h3>ترفندهای حرفه‌ای</h3>
+            <p>
+                تکنیک‌هایی که ادیت‌های
+                معمولی را خاص می‌کنند
+            </p>
+        </div>
+
+        <div class="card">
+            <div class="icon">✨</div>
+            <h3>افکت و ترنزیشن</h3>
+            <p>
+                افکت‌ها و ترنزیشن‌های جذاب
+                برای ویدیوهای خفن
+            </p>
+        </div>
+
+        <div class="card">
+            <div class="icon">📱</div>
+            <h3>مخصوص موبایل</h3>
+            <p>
+                فقط با گوشی شروع کن
+                و ادیتور حرفه‌ای شو
+            </p>
+        </div>
+
+    </div>
+
+    <div class="list">
+        <h2>🔥 داخل کانال چه چیزهایی می‌بینی؟</h2>
+
+        <div>✅ آموزش CapCut از پایه تا حرفه‌ای</div>
+        <div>✅ آموزش ساخت ادیت‌های سینمایی</div>
+        <div>✅ افکت و ترنزیشن‌های جذاب</div>
+        <div>✅ فونت و ابزارهای کاربردی</div>
+        <div>✅ ایده‌های جدید برای ادیت</div>
+        <div>✅ ترفندهای کوتاه و کاربردی</div>
+    </div>
+
+    <div class="invite">
+
+        <h2>🚀 آماده‌ای حرفه‌ای بشی؟</h2>
+
+        <p>
+            مسیر ادیت حرفه‌ای از همین‌جا شروع میشه.
+            <br>
+            همین حالا به کپ‌کات آکادمی بپیوند.
+        </p>
+
+        <a
+          class="join"
+          href="https://t.me/CAPCUTACADEMY12"
+          target="_blank"
+          rel="noopener">
+            ✈️ عضویت در کانال
+            <small>Join CAPCUT ACADEMY</small>
+        </a>
+
+        <div class="channel-link">
+            https://t.me/CAPCUTACADEMY12
+        </div>
+
+        <button class="share" onclick="shareChannel()">
+            📤 اشتراک‌گذاری کانال
+        </button>
+
+    </div>
+
+    <div class="stats">
+
+        <div class="stat">
+            <strong>🎬</strong>
+            <span>آموزش ادیت</span>
+        </div>
+
+        <div class="stat">
+            <strong>⚡</strong>
+            <span>ترفندهای جدید</span>
+        </div>
+
+        <div class="stat">
+            <strong>🆓</strong>
+            <span>محتوای کاربردی</span>
+        </div>
+
+    </div>
+
+    <div class="footer">
+        CAPCUT ACADEMY | کپ‌کات آکادمی
+        <br>
+        آموزش • ادیت • خلاقیت
+    </div>
+
+</div>
+
+<script>
+async function shareChannel(){
+
+    const data = {
+        title: "CAPCUT ACADEMY | کپ‌کات آکادمی",
+        text: "از صفر تا حرفه‌ای با CapCut 🎬",
+        url: "https://t.me/CAPCUTACADEMY12"
+    };
+
+    if(navigator.share){
+
+        try{
+            await navigator.share(data);
+        }catch(e){}
+
+    }else{
+
+        try{
+            await navigator.clipboard.writeText(data.url);
+            alert("لینک کانال کپی شد.");
+        }catch(e){
+            alert(data.url);
+        }
+
+    }
+}
+</script>
+
+</body>
+</html>
