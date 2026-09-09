@@ -1,2 +1,3 @@
-index.backup.html
-index.before-academy-v2.html
+*.before-*.html
+*.before.html
+*.sh
