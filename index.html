@@ -3,7 +3,13 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <meta name="theme-color" content="#050817">
+<meta name="description" content="CAPCUT ACADEMY؛ آموزش CapCut از صفر تا حرفه‌ای، ترفندهای ادیت، افکت، ترنزیشن و آموزش‌های کاربردی موبایل.">
+
+<meta property="og:title" content="CAPCUT ACADEMY | کپ‌کات آکادمی">
+<meta property="og:description" content="از صفر تا حرفه‌ای با CapCut 🎬">
+<meta property="og:type" content="website">
 
 <title>CAPCUT ACADEMY | کپ‌کات آکادمی</title>
 
@@ -14,11 +20,15 @@
     padding:0;
 }
 
+html{
+    scroll-behavior:smooth;
+}
+
 body{
     font-family:Tahoma,Arial,sans-serif;
     background:
-      radial-gradient(circle at 20% 10%,rgba(0,229,255,.18),transparent 28%),
-      radial-gradient(circle at 85% 20%,rgba(155,0,255,.20),transparent 30%),
+      radial-gradient(circle at 15% 5%,rgba(0,229,255,.18),transparent 28%),
+      radial-gradient(circle at 85% 15%,rgba(145,0,255,.20),transparent 30%),
       radial-gradient(circle at 50% 90%,rgba(0,110,255,.15),transparent 35%),
       #03050d;
     color:#fff;
@@ -26,61 +36,61 @@ body{
     overflow-x:hidden;
 }
 
-/* نورهای پس زمینه */
 body:before,
 body:after{
     content:"";
     position:fixed;
-    width:320px;
-    height:320px;
+    width:330px;
+    height:330px;
     border-radius:50%;
-    filter:blur(100px);
+    filter:blur(110px);
     opacity:.22;
     z-index:-1;
-    animation:float 7s infinite alternate ease-in-out;
+    animation:float 8s infinite alternate ease-in-out;
 }
 
 body:before{
     background:#00d9ff;
     top:5%;
-    left:-160px;
+    left:-170px;
 }
 
 body:after{
     background:#8b00ff;
-    right:-160px;
-    bottom:10%;
+    right:-170px;
+    bottom:8%;
     animation-delay:2s;
 }
 
 @keyframes float{
     from{transform:translateY(-30px)}
-    to{transform:translateY(50px)}
+    to{transform:translateY(55px)}
 }
 
 .container{
     width:100%;
-    max-width:520px;
+    max-width:560px;
     margin:auto;
-    padding:25px 16px 40px;
+    padding:24px 16px 110px;
 }
 
-/* لوگو */
+/* LOGO */
+
 .logo-area{
     text-align:center;
-    margin-top:15px;
+    margin-top:12px;
 }
 
 .logo-ring{
-    width:125px;
-    height:125px;
+    width:132px;
+    height:132px;
     margin:auto;
     padding:5px;
     border-radius:50%;
     background:linear-gradient(135deg,#00eaff,#762cff,#ff21cf);
     box-shadow:
-      0 0 25px rgba(0,229,255,.55),
-      0 0 60px rgba(126,39,255,.25);
+      0 0 28px rgba(0,229,255,.55),
+      0 0 70px rgba(126,39,255,.25);
     animation:pulse 3s infinite;
 }
 
@@ -93,7 +103,7 @@ body:after{
     display:flex;
     align-items:center;
     justify-content:center;
-    font-size:40px;
+    font-size:42px;
     font-weight:900;
     letter-spacing:-5px;
 }
@@ -101,19 +111,20 @@ body:after{
 @keyframes pulse{
     50%{
         box-shadow:
-        0 0 40px rgba(0,229,255,.75),
-        0 0 80px rgba(126,39,255,.4);
+        0 0 45px rgba(0,229,255,.8),
+        0 0 90px rgba(126,39,255,.4);
     }
 }
 
-/* عنوان */
+/* HERO */
+
 .brand{
     text-align:center;
     margin-top:22px;
 }
 
 .brand h1{
-    font-size:31px;
+    font-size:32px;
     font-weight:900;
     letter-spacing:1px;
     text-shadow:
@@ -127,12 +138,12 @@ body:after{
 
 .brand h2{
     font-size:22px;
-    margin-top:7px;
+    margin-top:8px;
     color:#f4c8ff;
 }
 
 .tagline{
-    margin-top:18px;
+    margin-top:17px;
     font-size:17px;
     line-height:2;
     color:#eee;
@@ -142,99 +153,38 @@ body:after{
     color:#00e5ff;
 }
 
-/* خط نور */
 .line{
-    width:80%;
+    width:82%;
     height:2px;
-    margin:22px auto;
-    background:linear-gradient(90deg,transparent,#00e5ff,#b52cff,transparent);
+    margin:23px auto;
+    background:linear-gradient(
+        90deg,
+        transparent,
+        #00e5ff,
+        #b52cff,
+        transparent
+    );
     box-shadow:0 0 15px #00e5ff;
 }
 
-/* کارت ها */
-.cards{
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:12px;
-    margin-top:20px;
-}
+/* HERO CTA */
 
-.card{
-    min-height:135px;
-    padding:17px 12px;
-    text-align:center;
-    border:1px solid rgba(0,229,255,.35);
-    border-radius:20px;
-    background:linear-gradient(
-        145deg,
-        rgba(15,30,55,.82),
-        rgba(20,10,45,.72)
-    );
-    backdrop-filter:blur(12px);
-    box-shadow:
-      inset 0 0 20px rgba(0,229,255,.03),
-      0 10px 30px rgba(0,0,0,.3);
-    transition:.3s;
-}
-
-.card:hover{
-    transform:translateY(-5px);
-    border-color:#00e5ff;
-}
-
-.icon{
-    font-size:30px;
-    margin-bottom:9px;
-}
-
-.card h3{
-    font-size:15px;
-    color:#00e5ff;
-    margin-bottom:8px;
-}
-
-.card p{
-    color:#bbb;
-    font-size:12px;
-    line-height:1.8;
-}
-
-/* بخش دعوت */
-.invite{
-    margin-top:25px;
-    padding:25px 18px;
-    border-radius:25px;
-    text-align:center;
-    background:
-      linear-gradient(135deg,
-      rgba(0,115,255,.18),
-      rgba(145,0,255,.18));
-    border:1px solid rgba(0,229,255,.35);
-    box-shadow:0 0 40px rgba(0,130,255,.1);
-}
-
-.invite h2{
-    font-size:23px;
-    margin-bottom:8px;
-}
-
-.invite p{
-    color:#bbb;
-    line-height:1.9;
-    font-size:14px;
-}
-
-/* دکمه */
-.join{
+.hero-button{
     display:block;
-    margin-top:20px;
+    text-align:center;
+    margin:20px auto 5px;
     padding:17px 15px;
-    border-radius:17px;
+    border-radius:18px;
     text-decoration:none;
     color:#fff;
     font-size:19px;
     font-weight:bold;
-    background:linear-gradient(100deg,#008cff,#00c8ff,#8d25ff);
+    background:linear-gradient(
+        100deg,
+        #008cff,
+        #00c8ff,
+        #8d25ff
+    );
     background-size:200% 100%;
     box-shadow:
       0 8px 30px rgba(0,166,255,.3),
@@ -251,6 +201,197 @@ body:after{
     }
 }
 
+/* CARDS */
+
+.cards{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:12px;
+    margin-top:25px;
+}
+
+.card{
+    min-height:145px;
+    padding:18px 12px;
+    text-align:center;
+    border:1px solid rgba(0,229,255,.32);
+    border-radius:21px;
+    background:linear-gradient(
+        145deg,
+        rgba(15,30,55,.84),
+        rgba(20,10,45,.74)
+    );
+    backdrop-filter:blur(12px);
+    box-shadow:
+      inset 0 0 20px rgba(0,229,255,.03),
+      0 10px 30px rgba(0,0,0,.3);
+    transition:.3s;
+}
+
+.card:hover{
+    transform:translateY(-5px);
+    border-color:#00e5ff;
+    box-shadow:
+      0 12px 35px rgba(0,0,0,.4),
+      0 0 25px rgba(0,229,255,.15);
+}
+
+.icon{
+    font-size:31px;
+    margin-bottom:9px;
+}
+
+.card h3{
+    font-size:15px;
+    color:#00e5ff;
+    margin-bottom:8px;
+}
+
+.card p{
+    color:#bbb;
+    font-size:12px;
+    line-height:1.8;
+}
+
+/* SECTION */
+
+.section{
+    margin-top:28px;
+}
+
+.section-title{
+    text-align:center;
+    font-size:21px;
+    margin-bottom:14px;
+}
+
+.section-title span{
+    color:#00e5ff;
+}
+
+/* FEATURES */
+
+.feature-box{
+    padding:20px;
+    border-radius:22px;
+    background:rgba(255,255,255,.035);
+    border:1px solid rgba(255,255,255,.08);
+}
+
+.feature{
+    display:flex;
+    align-items:center;
+    gap:11px;
+    padding:12px 0;
+    border-bottom:1px solid rgba(255,255,255,.06);
+    color:#ddd;
+    font-size:13px;
+}
+
+.feature:last-child{
+    border-bottom:0;
+}
+
+.feature-icon{
+    font-size:20px;
+}
+
+/* SHOWCASE */
+
+.showcase{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:11px;
+}
+
+.show{
+    height:125px;
+    border-radius:19px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    padding:12px;
+    border:1px solid rgba(0,229,255,.2);
+    background:
+      linear-gradient(
+        135deg,
+        rgba(0,229,255,.12),
+        rgba(132,0,255,.16)
+      );
+    position:relative;
+    overflow:hidden;
+}
+
+.show:before{
+    content:"";
+    position:absolute;
+    width:100px;
+    height:100px;
+    border-radius:50%;
+    background:#00e5ff;
+    filter:blur(55px);
+    opacity:.18;
+}
+
+.show-content{
+    position:relative;
+    z-index:1;
+}
+
+.show strong{
+    display:block;
+    font-size:17px;
+    margin-bottom:6px;
+}
+
+.show span{
+    color:#aaa;
+    font-size:11px;
+}
+
+/* INVITE */
+
+.invite{
+    margin-top:28px;
+    padding:27px 18px;
+    border-radius:26px;
+    text-align:center;
+    background:
+      linear-gradient(
+        135deg,
+        rgba(0,115,255,.19),
+        rgba(145,0,255,.19)
+      );
+    border:1px solid rgba(0,229,255,.35);
+    box-shadow:0 0 45px rgba(0,130,255,.1);
+}
+
+.invite h2{
+    font-size:23px;
+    margin-bottom:9px;
+}
+
+.invite p{
+    color:#bbb;
+    line-height:1.9;
+    font-size:14px;
+}
+
+.join{
+    display:block;
+    margin-top:20px;
+    padding:17px 15px;
+    border-radius:17px;
+    text-decoration:none;
+    color:#fff;
+    font-size:19px;
+    font-weight:bold;
+    background:linear-gradient(100deg,#008cff,#00c8ff,#8d25ff);
+    background-size:200% 100%;
+    box-shadow:0 8px 30px rgba(0,166,255,.3);
+}
+
 .join small{
     display:block;
     margin-top:5px;
@@ -258,7 +399,6 @@ body:after{
     font-size:11px;
 }
 
-/* لینک */
 .channel-link{
     margin-top:13px;
     padding:12px;
@@ -271,61 +411,6 @@ body:after{
     word-break:break-all;
 }
 
-/* آمار */
-.stats{
-    display:grid;
-    grid-template-columns:repeat(3,1fr);
-    gap:8px;
-    margin-top:20px;
-}
-
-.stat{
-    text-align:center;
-    padding:14px 5px;
-    border-radius:16px;
-    background:rgba(255,255,255,.035);
-    border:1px solid rgba(255,255,255,.08);
-}
-
-.stat strong{
-    display:block;
-    color:#00e5ff;
-    font-size:18px;
-}
-
-.stat span{
-    color:#aaa;
-    font-size:10px;
-    margin-top:5px;
-    display:block;
-}
-
-/* لیست */
-.list{
-    margin-top:25px;
-    padding:20px;
-    border-radius:20px;
-    background:rgba(255,255,255,.035);
-    border:1px solid rgba(255,255,255,.07);
-}
-
-.list h2{
-    text-align:center;
-    font-size:19px;
-    margin-bottom:15px;
-}
-
-.list div{
-    padding:9px 0;
-    font-size:13px;
-    color:#ddd;
-}
-
-.list div::first-letter{
-    color:#00e5ff;
-}
-
-/* اشتراک */
 .share{
     width:100%;
     border:1px solid rgba(0,229,255,.3);
@@ -335,9 +420,41 @@ body:after{
     border-radius:15px;
     margin-top:12px;
     font-size:14px;
+    cursor:pointer;
 }
 
-/* فوتر */
+/* STATS */
+
+.stats{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:8px;
+    margin-top:22px;
+}
+
+.stat{
+    text-align:center;
+    padding:15px 5px;
+    border-radius:16px;
+    background:rgba(255,255,255,.035);
+    border:1px solid rgba(255,255,255,.08);
+}
+
+.stat strong{
+    display:block;
+    color:#00e5ff;
+    font-size:22px;
+}
+
+.stat span{
+    color:#aaa;
+    font-size:10px;
+    margin-top:6px;
+    display:block;
+}
+
+/* FOOTER */
+
 .footer{
     text-align:center;
     color:#666;
@@ -346,11 +463,68 @@ body:after{
     line-height:2;
 }
 
-/* موبایل */
-@media(max-width:360px){
-    .brand h1{font-size:25px}
-    .brand h2{font-size:19px}
-    .cards{grid-template-columns:1fr}
+/* STICKY BUTTON */
+
+.sticky-join{
+    position:fixed;
+    bottom:14px;
+    left:50%;
+    transform:translateX(-50%);
+    width:min(92%,520px);
+    z-index:100;
+}
+
+.sticky-join a{
+    display:block;
+    text-align:center;
+    text-decoration:none;
+    color:#fff;
+    background:linear-gradient(100deg,#008cff,#00c8ff,#8d25ff);
+    padding:15px;
+    border-radius:17px;
+    font-weight:bold;
+    font-size:16px;
+    box-shadow:
+      0 8px 35px rgba(0,0,0,.55),
+      0 0 25px rgba(0,180,255,.25);
+}
+
+/* SCROLL ANIMATION */
+
+.reveal{
+    opacity:0;
+    transform:translateY(25px);
+    transition:.7s ease;
+}
+
+.reveal.visible{
+    opacity:1;
+    transform:translateY(0);
+}
+
+/* MOBILE */
+
+@media(max-width:380px){
+
+    .brand h1{
+        font-size:26px;
+    }
+
+    .brand h2{
+        font-size:19px;
+    }
+
+    .tagline{
+        font-size:15px;
+    }
+
+    .cards{
+        grid-template-columns:1fr;
+    }
+
+    .showcase{
+        grid-template-columns:1fr;
+    }
 }
 </style>
 </head>
@@ -359,25 +533,36 @@ body:after{
 
 <div class="container">
 
-    <div class="logo-area">
+    <div class="logo-area reveal">
         <div class="logo-ring">
             <div class="logo">CC</div>
         </div>
     </div>
 
-    <div class="brand">
+    <div class="brand reveal">
+
         <h1>CAPCUT <span>ACADEMY</span></h1>
+
         <h2>کپ‌کات آکادمی</h2>
 
         <div class="tagline">
             از <strong>صفر</strong> تا <strong>حرفه‌ای</strong><br>
             آموزش تدوین و ادیت حرفه‌ای با <strong>CapCut</strong>
         </div>
+
+        <a
+            class="hero-button"
+            href="https://t.me/CAPCUTACADEMY12"
+            target="_blank"
+            rel="noopener">
+            ✈️ همین حالا وارد آکادمی شو
+        </a>
+
     </div>
 
     <div class="line"></div>
 
-    <div class="cards">
+    <div class="cards reveal">
 
         <div class="card">
             <div class="icon">🎬</div>
@@ -392,8 +577,8 @@ body:after{
             <div class="icon">⚡</div>
             <h3>ترفندهای حرفه‌ای</h3>
             <p>
-                تکنیک‌هایی که ادیت‌های
-                معمولی را خاص می‌کنند
+                تکنیک‌هایی برای تبدیل
+                ادیت معمولی به ادیت خاص
             </p>
         </div>
 
@@ -402,7 +587,7 @@ body:after{
             <h3>افکت و ترنزیشن</h3>
             <p>
                 افکت‌ها و ترنزیشن‌های جذاب
-                برای ویدیوهای خفن
+                برای ویدیوهای حرفه‌ای
             </p>
         </div>
 
@@ -417,18 +602,89 @@ body:after{
 
     </div>
 
-    <div class="list">
-        <h2>🔥 داخل کانال چه چیزهایی می‌بینی؟</h2>
+    <section class="section reveal">
 
-        <div>✅ آموزش CapCut از پایه تا حرفه‌ای</div>
-        <div>✅ آموزش ساخت ادیت‌های سینمایی</div>
-        <div>✅ افکت و ترنزیشن‌های جذاب</div>
-        <div>✅ فونت و ابزارهای کاربردی</div>
-        <div>✅ ایده‌های جدید برای ادیت</div>
-        <div>✅ ترفندهای کوتاه و کاربردی</div>
-    </div>
+        <h2 class="section-title">
+            چرا <span>CAPCUT ACADEMY</span>؟
+        </h2>
 
-    <div class="invite">
+        <div class="feature-box">
+
+            <div class="feature">
+                <span class="feature-icon">✅</span>
+                آموزش CapCut از پایه تا حرفه‌ای
+            </div>
+
+            <div class="feature">
+                <span class="feature-icon">🎞️</span>
+                آموزش ساخت ادیت‌های سینمایی
+            </div>
+
+            <div class="feature">
+                <span class="feature-icon">🔥</span>
+                افکت و ترنزیشن‌های جذاب
+            </div>
+
+            <div class="feature">
+                <span class="feature-icon">🔤</span>
+                فونت و ابزارهای کاربردی
+            </div>
+
+            <div class="feature">
+                <span class="feature-icon">💡</span>
+                ایده‌های جدید برای ادیت
+            </div>
+
+            <div class="feature">
+                <span class="feature-icon">⚡</span>
+                ترفندهای کوتاه و کاربردی
+            </div>
+
+        </div>
+
+    </section>
+
+    <section class="section reveal">
+
+        <h2 class="section-title">
+            چیزهایی که <span>یاد می‌گیری</span>
+        </h2>
+
+        <div class="showcase">
+
+            <div class="show">
+                <div class="show-content">
+                    <strong>🎬 ادیت سینمایی</strong>
+                    <span>ساخت ویدیوهای حرفه‌ای</span>
+                </div>
+            </div>
+
+            <div class="show">
+                <div class="show-content">
+                    <strong>✨ افکت حرفه‌ای</strong>
+                    <span>افکت‌های جذاب CapCut</span>
+                </div>
+            </div>
+
+            <div class="show">
+                <div class="show-content">
+                    <strong>⚡ ترنزیشن</strong>
+                    <span>حرکت‌های نرم و حرفه‌ای</span>
+                </div>
+            </div>
+
+            <div class="show">
+                <div class="show-content">
+                    <strong>📱 ادیت با موبایل</strong>
+                    <span>بدون نیاز به کامپیوتر</span>
+                </div>
+            </div>
+
+        </div>
+
+    </section>
+
+    <div class="invite reveal">
 
         <h2>🚀 آماده‌ای حرفه‌ای بشی؟</h2>
 
@@ -439,11 +695,11 @@ body:after{
         </p>
 
         <a
-          class="join"
-          href="https://t.me/CAPCUTACADEMY12"
-          target="_blank"
-          rel="noopener">
-            ✈️ عضویت در کانال
+            class="join"
+            href="https://t.me/CAPCUTACADEMY12"
+            target="_blank"
+            rel="noopener">
+            ✈️ عضویت رایگان در کانال
             <small>Join CAPCUT ACADEMY</small>
         </a>
 
@@ -457,7 +713,7 @@ body:after{
 
     </div>
 
-    <div class="stats">
+    <div class="stats reveal">
 
         <div class="stat">
             <strong>🎬</strong>
@@ -484,7 +740,17 @@ body:after{
 
 </div>
 
+<div class="sticky-join">
+    <a
+        href="https://t.me/CAPCUTACADEMY12"
+        target="_blank"
+        rel="noopener">
+        🚀 عضویت در کپ‌کات آکادمی
+    </a>
+</div>
+
 <script>
+
 async function shareChannel(){
 
     const data = {
@@ -502,14 +768,46 @@ async function shareChannel(){
     }else{
 
         try{
+
             await navigator.clipboard.writeText(data.url);
+
             alert("لینک کانال کپی شد.");
+
         }catch(e){
+
             alert(data.url);
+
         }
 
     }
 }
+
+
+/* SCROLL REVEAL */
+
+const observer = new IntersectionObserver(
+    entries => {
+
+        entries.forEach(entry => {
+
+            if(entry.isIntersecting){
+
+                entry.target.classList.add("visible");
+
+            }
+
+        });
+
+    },
+    {
+        threshold:.12
+    }
+);
+
+document
+    .querySelectorAll(".reveal")
+    .forEach(element => observer.observe(element));
+
 </script>
 
 </body>
