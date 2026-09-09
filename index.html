@@ -350,6 +350,126 @@ body:after{
     font-size:11px;
 }
 
+
+/* LEARNING PATH */
+
+.learning-path{
+    padding:20px 16px;
+    border-radius:24px;
+    background:rgba(255,255,255,.035);
+    border:1px solid rgba(255,255,255,.08);
+}
+
+.level{
+    display:flex;
+    align-items:center;
+    gap:11px;
+    min-height:82px;
+}
+
+.level-number{
+    width:38px;
+    height:38px;
+    min-width:38px;
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:11px;
+    font-weight:bold;
+    color:#00e5ff;
+    border:1px solid rgba(0,229,255,.4);
+    background:rgba(0,229,255,.06);
+}
+
+.level-icon{
+    width:45px;
+    height:45px;
+    min-width:45px;
+    border-radius:15px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:24px;
+    background:linear-gradient(
+        135deg,
+        rgba(0,229,255,.12),
+        rgba(139,0,255,.15)
+    );
+}
+
+.level-content h3{
+    font-size:15px;
+    color:#fff;
+    margin-bottom:5px;
+}
+
+.level-content p{
+    color:#999;
+    font-size:11px;
+    line-height:1.8;
+}
+
+.path-line{
+    width:2px;
+    height:19px;
+    margin-right:19px;
+    background:linear-gradient(
+        #00e5ff,
+        #762cff
+    );
+    opacity:.55;
+}
+
+/* CREATOR BOX */
+
+.creator-box{
+    text-align:center;
+    padding:27px 19px;
+    border-radius:25px;
+    background:
+      radial-gradient(
+        circle at 50% 0%,
+        rgba(0,229,255,.13),
+        transparent 50%
+      ),
+      rgba(255,255,255,.035);
+    border:1px solid rgba(0,229,255,.18);
+}
+
+.creator-icon{
+    font-size:45px;
+    margin-bottom:10px;
+}
+
+.creator-box h2{
+    font-size:21px;
+    margin-bottom:10px;
+}
+
+.creator-box p{
+    color:#aaa;
+    font-size:13px;
+    line-height:2;
+}
+
+.mini-tags{
+    display:flex;
+    justify-content:center;
+    flex-wrap:wrap;
+    gap:7px;
+    margin-top:17px;
+}
+
+.mini-tags span{
+    padding:8px 11px;
+    border-radius:12px;
+    font-size:10px;
+    color:#bdefff;
+    background:rgba(0,229,255,.06);
+    border:1px solid rgba(0,229,255,.16);
+}
+
 /* INVITE */
 
 .invite{
@@ -684,7 +804,85 @@ body:after{
 
     </section>
 
-    <div class="invite reveal">
+    
+<section class="section reveal">
+
+    <h2 class="section-title">
+        مسیر <span>حرفه‌ای شدن</span>
+    </h2>
+
+    <div class="learning-path">
+
+        <div class="level">
+            <div class="level-number">01</div>
+            <div class="level-icon">🌱</div>
+            <div class="level-content">
+                <h3>شروع از صفر</h3>
+                <p>آشنایی با ابزارهای CapCut و ساخت اولین ویدیو</p>
+            </div>
+        </div>
+
+        <div class="path-line"></div>
+
+        <div class="level">
+            <div class="level-number">02</div>
+            <div class="level-icon">⚡</div>
+            <div class="level-content">
+                <h3>ادیت حرفه‌ای</h3>
+                <p>متن، افکت، موسیقی، ترنزیشن و تنظیمات حرفه‌ای</p>
+            </div>
+        </div>
+
+        <div class="path-line"></div>
+
+        <div class="level">
+            <div class="level-number">03</div>
+            <div class="level-icon">🔥</div>
+            <div class="level-content">
+                <h3>ادیت سینمایی</h3>
+                <p>ساخت ویدیوهای جذاب با تکنیک‌های پیشرفته</p>
+            </div>
+        </div>
+
+        <div class="path-line"></div>
+
+        <div class="level">
+            <div class="level-number">04</div>
+            <div class="level-icon">👑</div>
+            <div class="level-content">
+                <h3>تبدیل شدن به ادیتور</h3>
+                <p>ایده‌پردازی، خلاقیت و ساخت سبک شخصی</p>
+            </div>
+        </div>
+
+    </div>
+
+</section>
+
+<section class="section reveal">
+
+    <div class="creator-box">
+
+        <div class="creator-icon">📱</div>
+
+        <h2>فقط یک گوشی کافی است</h2>
+
+        <p>
+            برای شروع ادیت حرفه‌ای نیازی به کامپیوتر گران‌قیمت نداری.
+            با گوشی خودت یاد بگیر، تمرین کن و پیشرفت کن.
+        </p>
+
+        <div class="mini-tags">
+            <span>📱 موبایل</span>
+            <span>🎬 CapCut</span>
+            <span>🚀 تمرین</span>
+        </div>
+
+    </div>
+
+</section>
+
+<div class="invite reveal">
 
         <h2>🚀 آماده‌ای حرفه‌ای بشی؟</h2>
 
