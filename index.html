@@ -647,6 +647,221 @@ body:after{
     }
 }
 </style>
+
+<style>
+
+.academy-hub{
+  margin:70px 0 35px;
+}
+
+.section-head{
+  text-align:center;
+  margin-bottom:25px;
+}
+
+.eyebrow{
+  color:#8b7cff;
+  font-size:12px;
+  font-weight:800;
+  letter-spacing:1.5px;
+}
+
+.section-head h2,
+.notify-box h2{
+  margin:8px 0;
+  font-size:28px;
+}
+
+.section-head p,
+.notify-box p{
+  color:#a8a8b8;
+  line-height:1.9;
+}
+
+.academy-search{
+  margin:0 auto 22px;
+  max-width:600px;
+}
+
+.academy-search input{
+  width:100%;
+  box-sizing:border-box;
+  padding:15px 18px;
+  border:1px solid rgba(255,255,255,.12);
+  border-radius:16px;
+  background:rgba(255,255,255,.06);
+  color:white;
+  outline:none;
+  font-size:15px;
+}
+
+.lesson-grid{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:16px;
+}
+
+.lesson-card{
+  padding:22px;
+  border-radius:22px;
+  border:1px solid rgba(255,255,255,.09);
+  background:linear-gradient(145deg,rgba(255,255,255,.07),rgba(255,255,255,.025));
+}
+
+.lesson-icon{
+  font-size:32px;
+  margin-bottom:12px;
+}
+
+.lesson-level{
+  display:inline-block;
+  padding:5px 10px;
+  border-radius:20px;
+  background:rgba(139,124,255,.12);
+  color:#b7adff;
+  font-size:11px;
+}
+
+.lesson-card h3{
+  margin:13px 0 8px;
+  font-size:18px;
+}
+
+.lesson-card p{
+  color:#a7a7b5;
+  line-height:1.8;
+  font-size:14px;
+}
+
+.lesson-meta{
+  color:#888898;
+  font-size:12px;
+  margin:14px 0;
+}
+
+.lesson-btn,
+.modal-channel{
+  border:0;
+  border-radius:13px;
+  padding:11px 15px;
+  background:#ffffff;
+  color:#111;
+  font-weight:800;
+  cursor:pointer;
+  text-decoration:none;
+  display:inline-block;
+}
+
+.lesson-modal{
+  display:none;
+  position:fixed;
+  inset:0;
+  z-index:9999;
+  background:rgba(0,0,0,.78);
+  padding:20px;
+  box-sizing:border-box;
+  align-items:center;
+  justify-content:center;
+}
+
+.lesson-modal-box{
+  position:relative;
+  width:min(560px,100%);
+  padding:30px;
+  border-radius:25px;
+  background:#171720;
+  border:1px solid rgba(255,255,255,.12);
+  box-sizing:border-box;
+}
+
+.lesson-modal-box h2{
+  margin:12px 0;
+}
+
+.lesson-modal-box p{
+  color:#b5b5c2;
+  line-height:2;
+}
+
+.modal-close{
+  position:absolute;
+  top:12px;
+  left:15px;
+  border:0;
+  background:none;
+  color:white;
+  font-size:30px;
+  cursor:pointer;
+}
+
+.modal-channel{
+  margin-top:12px;
+}
+
+.notify-box{
+  text-align:center;
+  margin:70px 0 35px;
+  padding:35px 22px;
+  border-radius:28px;
+  border:1px solid rgba(139,124,255,.25);
+  background:linear-gradient(145deg,rgba(139,124,255,.12),rgba(255,255,255,.04));
+}
+
+.notify-icon{
+  font-size:38px;
+}
+
+.notify-box form{
+  max-width:500px;
+  margin:22px auto 0;
+  display:flex;
+  gap:10px;
+}
+
+.notify-box input{
+  flex:1;
+  min-width:0;
+  padding:14px;
+  border-radius:13px;
+  border:1px solid rgba(255,255,255,.12);
+  background:rgba(0,0,0,.2);
+  color:white;
+  outline:none;
+}
+
+.notify-box button{
+  border:0;
+  border-radius:13px;
+  padding:14px 18px;
+  background:#fff;
+  color:#111;
+  font-weight:800;
+}
+
+.notify-box small{
+  display:block;
+  margin-top:12px;
+  color:#9f96ff;
+}
+
+@media(max-width:650px){
+
+  .lesson-grid{
+    grid-template-columns:1fr;
+  }
+
+  .notify-box form{
+    flex-direction:column;
+  }
+
+  .notify-box button{
+    width:100%;
+  }
+
+}
+
+</style>
+
 </head>
 
 <body>
@@ -722,7 +937,147 @@ body:after{
 
     </div>
 
-    <section class="section reveal">
+    
+<section class="academy-hub" id="academy">
+
+  <div class="section-head">
+    <span class="eyebrow">CAPCUT ACADEMY</span>
+    <h2>مرکز آموزش CapCut</h2>
+    <p>آموزش‌های کاربردی را پیدا کن و قدم‌به‌قدم پیشرفت کن.</p>
+  </div>
+
+  <div class="academy-search">
+    <input type="search"
+           id="lessonSearch"
+           placeholder="🔎 جستجوی آموزش..."
+           aria-label="جستجوی آموزش">
+  </div>
+
+  <div class="lesson-grid" id="lessonGrid">
+
+    <article class="lesson-card">
+      <div class="lesson-icon">🎬</div>
+      <span class="lesson-level">مبتدی</span>
+      <h3>ساخت اولین ویدیو در CapCut</h3>
+      <p>از وارد کردن ویدیو تا برش، متن و خروجی گرفتن.</p>
+      <div class="lesson-meta">📱 موبایل · ⏱ ۳ دقیقه</div>
+      <button class="lesson-btn" onclick="showLesson('ساخت اولین ویدیو در CapCut','در این آموزش با ابزارهای اصلی CapCut برای ساخت اولین ویدیو آشنا می‌شوی.')">
+        شروع آموزش
+      </button>
+    </article>
+
+    <article class="lesson-card">
+      <div class="lesson-icon">✂️</div>
+      <span class="lesson-level">مبتدی</span>
+      <h3>برش حرفه‌ای ویدیو</h3>
+      <p>بخش‌های اضافی را حذف کن و ریتم ویدیو را بهتر کن.</p>
+      <div class="lesson-meta">📱 موبایل · ⏱ ۲ دقیقه</div>
+      <button class="lesson-btn" onclick="showLesson('برش حرفه‌ای ویدیو','با Split و Trim می‌توانی قسمت‌های اضافی ویدیو را سریع حذف کنی.')">
+        شروع آموزش
+      </button>
+    </article>
+
+    <article class="lesson-card">
+      <div class="lesson-icon">✨</div>
+      <span class="lesson-level">متوسط</span>
+      <h3>افکت‌های جذاب CapCut</h3>
+      <p>افکت‌های مناسب را انتخاب کن و ظاهر ویدیو را جذاب‌تر کن.</p>
+      <div class="lesson-meta">🔥 افکت · ⏱ ۴ دقیقه</div>
+      <button class="lesson-btn" onclick="showLesson('افکت‌های جذاب CapCut','افکت‌ها را متناسب با صحنه و سبک ویدیو انتخاب کن تا ادیت شلوغ نشود.')">
+        شروع آموزش
+      </button>
+    </article>
+
+    <article class="lesson-card">
+      <div class="lesson-icon">⚡</div>
+      <span class="lesson-level">متوسط</span>
+      <h3>ترنزیشن حرفه‌ای</h3>
+      <p>بین صحنه‌ها حرکت‌های نرم و جذاب ایجاد کن.</p>
+      <div class="lesson-meta">⚡ Transition · ⏱ ۳ دقیقه</div>
+      <button class="lesson-btn" onclick="showLesson('ترنزیشن حرفه‌ای','ترنزیشن باید با حرکت و ریتم صحنه هماهنگ باشد.')">
+        شروع آموزش
+      </button>
+    </article>
+
+    <article class="lesson-card">
+      <div class="lesson-icon">🎵</div>
+      <span class="lesson-level">متوسط</span>
+      <h3>ادیت با موزیک</h3>
+      <p>برش‌ها و حرکت‌های ویدیو را با ضرب موزیک هماهنگ کن.</p>
+      <div class="lesson-meta">🎧 موزیک · ⏱ ۵ دقیقه</div>
+      <button class="lesson-btn" onclick="showLesson('ادیت با موزیک','هماهنگ کردن برش‌ها با ضرب موزیک یکی از پایه‌های ادیت جذاب است.')">
+        شروع آموزش
+      </button>
+    </article>
+
+    <article class="lesson-card">
+      <div class="lesson-icon">👑</div>
+      <span class="lesson-level">حرفه‌ای</span>
+      <h3>ساخت ادیت سینمایی</h3>
+      <p>رنگ، حرکت، صدا و افکت را برای یک ادیت حرفه‌ای ترکیب کن.</p>
+      <div class="lesson-meta">🎥 سینمایی · ⏱ ۷ دقیقه</div>
+      <button class="lesson-btn" onclick="showLesson('ساخت ادیت سینمایی','برای ساخت ادیت سینمایی باید رنگ، حرکت، صدا، موسیقی و ریتم را هماهنگ کنی.')">
+        شروع آموزش
+      </button>
+    </article>
+
+  </div>
+</section>
+
+<section class="notify-box" id="notify">
+
+  <div class="notify-icon">🔔</div>
+
+  <span class="eyebrow">CAPCUT ACADEMY</span>
+
+  <h2>آموزش‌های جدید را از دست نده</h2>
+
+  <p>
+    ایمیلت را ثبت کن تا هنگام انتشار آموزش‌های جدید بتوانیم به تو اطلاع بدهیم.
+  </p>
+
+  <form id="emailForm">
+
+    <input
+      type="email"
+      id="emailInput"
+      placeholder="ایمیل شما"
+      required>
+
+    <button type="submit">
+      عضویت رایگان
+    </button>
+
+  </form>
+
+  <small id="emailMessage"></small>
+
+</section>
+
+<div class="lesson-modal" id="lessonModal">
+
+  <div class="lesson-modal-box">
+
+    <button class="modal-close" onclick="closeLesson()">×</button>
+
+    <span class="eyebrow">آموزش CAPCUT</span>
+
+    <h2 id="modalTitle"></h2>
+
+    <p id="modalText"></p>
+
+    <a
+      href="https://t.me/CAPCUTACADEMY12"
+      target="_blank"
+      class="modal-channel">
+      آموزش‌های بیشتر در کانال ↗
+    </a>
+
+  </div>
+
+</div>
+
+<section class="section reveal">
 
         <h2 class="section-title">
             چرا <span>CAPCUT ACADEMY</span>؟
@@ -1005,6 +1360,126 @@ const observer = new IntersectionObserver(
 document
     .querySelectorAll(".reveal")
     .forEach(element => observer.observe(element));
+
+</script>
+
+
+<script>
+
+function showLesson(title,text){
+
+  document.getElementById("modalTitle").textContent=title;
+
+  document.getElementById("modalText").textContent=text;
+
+  document.getElementById("lessonModal").style.display="flex";
+
+}
+
+function closeLesson(){
+
+  document.getElementById("lessonModal").style.display="none";
+
+}
+
+const modal=document.getElementById("lessonModal");
+
+if(modal){
+
+  modal.addEventListener("click",function(e){
+
+    if(e.target===this){
+
+      closeLesson();
+
+    }
+
+  });
+
+}
+
+const search=document.getElementById("lessonSearch");
+
+if(search){
+
+  search.addEventListener("input",function(){
+
+    const q=this.value.trim().toLowerCase();
+
+    document.querySelectorAll(".lesson-card").forEach(card=>{
+
+      card.style.display=
+        card.innerText.toLowerCase().includes(q)
+        ? ""
+        : "none";
+
+    });
+
+  });
+
+}
+
+const emailForm=document.getElementById("emailForm");
+
+if(emailForm){
+
+  emailForm.addEventListener("submit",async function(e){
+
+    e.preventDefault();
+
+    const email=document.getElementById("emailInput").value.trim();
+
+    const message=document.getElementById("emailMessage");
+
+    const button=emailForm.querySelector("button");
+
+    if(!email) return;
+
+    button.disabled=true;
+
+    button.textContent="در حال ثبت...";
+
+    try{
+
+      const response=await fetch(
+        "https://script.google.com/macros/s/AKfycbzl0DQ-xo71IyJFlKxYNqR7p7pb0J5G7EDbrXPMNDHNcIrJX8J5mpgb_90rg-AhOv1qPQ/exec",
+        {
+          method:"POST",
+          headers:{
+            "Content-Type":"text/plain;charset=utf-8"
+          },
+          body:JSON.stringify({
+            email:email
+          })
+        }
+      );
+
+      const result=await response.json();
+
+      message.textContent=
+        result.message ||
+        "ایمیل شما با موفقیت ثبت شد.";
+
+      if(result.success){
+
+        document.getElementById("emailInput").value="";
+
+      }
+
+    }catch(error){
+
+      message.textContent=
+        "اتصال برقرار نشد. دوباره تلاش کنید.";
+
+    }
+
+    button.disabled=false;
+
+    button.textContent="عضویت رایگان";
+
+  });
+
+}
 
 </script>
 
