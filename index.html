@@ -1204,6 +1204,172 @@ body:after{
 </head>
 
 <body>
+<!-- WEEKLY AD SYSTEM -->
+<style>
+.weekly-ad-box{
+margin:25px auto;
+width:min(1100px,92%);
+padding:22px;
+border-radius:22px;
+background:linear-gradient(135deg,#10101a,#18102b);
+border:1px solid #673ab7;
+box-shadow:0 0 35px #7c3aed33;
+text-align:center;
+}
+.weekly-ad-box h2{
+margin:0 0 8px;
+font-size:24px;
+}
+.weekly-ad-name{
+color:#c4b5fd;
+margin-bottom:12px;
+}
+.weekly-ad-timer{
+font-size:22px;
+font-weight:bold;
+letter-spacing:1px;
+margin:15px 0;
+}
+.weekly-ad-btn{
+display:inline-block;
+padding:14px 28px;
+border-radius:50px;
+background:linear-gradient(90deg,#7c3aed,#06b6d4);
+color:#fff!important;
+text-decoration:none!important;
+font-weight:bold;
+box-shadow:0 0 25px #7c3aed88;
+animation:adGlow 1.8s infinite;
+}
+@keyframes adGlow{
+0%,100%{transform:scale(1);box-shadow:0 0 18px #7c3aed66}
+50%{transform:scale(1.04);box-shadow:0 0 35px #06b6d499}
+}
+.weekly-ad-floating{
+display:none;
+position:fixed;
+bottom:18px;
+right:15px;
+left:15px;
+z-index:9999;
+text-align:center;
+}
+.weekly-ad-floating a{
+display:block;
+padding:15px;
+border-radius:50px;
+background:linear-gradient(90deg,#7c3aed,#06b6d4);
+color:white!important;
+text-decoration:none!important;
+font-weight:bold;
+box-shadow:0 0 25px #7c3aed99;
+animation:adGlow 1.8s infinite;
+}
+@media(max-width:700px){
+.weekly-ad-floating{display:block}
+.weekly-ad-box{padding-bottom:28px}
+}
+</style>
+
+<section class="weekly-ad-box" id="weeklyAd">
+<h2>تبلیغ ویژه این هفته</h2>
+<div class="weekly-ad-name" id="weeklyAdName">
+کانال پیشنهادی هفته
+</div>
+
+<div class="weekly-ad-timer" id="weeklyAdTimer">
+در حال محاسبه...
+</div>
+
+<a class="weekly-ad-btn"
+id="weeklyAdButton"
+href="https://t.me/CAPCUTACADEMY12"
+target="_blank"
+rel="noopener">
+Join Our Recommended Channel
+</a>
+
+<a href="booking.html" class="advertise-link"
+style="display:block;margin-top:15px;color:#aaa;text-decoration:none;">
+تبلیغ کسب‌وکار شما در این جایگاه
+</a>
+</section>
+
+<div class="weekly-ad-floating">
+<a id="weeklyAdFloating"
+href="https://t.me/CAPCUTACADEMY12"
+target="_blank"
+rel="noopener">
+Join Our Recommended Channel
+</a>
+</div>
+
+<script>
+(function(){
+
+let AD = null;
+
+fetch("ads.json")
+.then(function(response){
+  return response.json();
+})
+.then(function(data){
+  AD = data;
+
+  if(name) name.textContent = AD.name;
+  if(button) button.href = "go.html";
+  if(floating) floating.href = "go.html";
+
+  updateTimer();
+})
+.catch(function(){
+  timer.textContent = "تبلیغ فعالی وجود ندارد";
+});
+
+const name = document.getElementById("weeklyAdName");
+const button = document.getElementById("weeklyAdButton");
+const floating = document.getElementById("weeklyAdFloating");
+const timer = document.getElementById("weeklyAdTimer");
+
+if(name) name.textContent = AD.name;
+if(button) button.href = AD.url;
+if(floating) floating.href = AD.url;
+
+function updateTimer(){
+
+if(!AD || !AD.active) return;
+
+const end = new Date(AD.end).getTime();
+const now = Date.now();
+const diff = end - now;
+
+if(diff <= 0){
+timer.textContent = "این تبلیغ به پایان رسیده است";
+button.style.display = "none";
+floating.style.display = "none";
+return;
+}
+
+const days = Math.floor(diff / 86400000);
+const hours = Math.floor((diff % 86400000) / 3600000);
+const minutes = Math.floor((diff % 3600000) / 60000);
+const seconds = Math.floor((diff % 60000) / 1000);
+
+timer.textContent =
+days + " روز " +
+hours + " ساعت " +
+minutes + " دقیقه " +
+seconds + " ثانیه";
+
+}
+
+updateTimer();
+setInterval(updateTimer,1000);
+
+})();
+</script>
+<!-- WEEKLY AD SYSTEM -->
+
 
 <div class="container">
 
@@ -2040,6 +2206,36 @@ document.addEventListener("DOMContentLoaded", updateUI);
 
 </script>
 
+
+<!-- AD BOOKING BUTTON -->
+<style>
+.ad-booking{
+margin:30px auto;
+width:min(900px,92%);
+padding:25px;
+text-align:center;
+border-radius:22px;
+background:linear-gradient(135deg,#11111b,#171026);
+border:1px solid #33205e;
+}
+.ad-booking a{
+display:inline-block;
+margin-top:12px;
+padding:14px 28px;
+border-radius:50px;
+background:linear-gradient(90deg,#7c3aed,#06b6d4);
+color:#fff!important;
+text-decoration:none!important;
+font-weight:bold;
+}
+</style>
+
+<section class="ad-booking">
+<h2>تبلیغ شما در سایت ما</h2>
+<p>کانال یا کسب‌وکار خود را برای جایگاه تبلیغاتی هفتگی رزرو کنید.</p>
+<a href="booking.html">رزرو جایگاه تبلیغ</a>
+</section>
+<!-- AD BOOKING BUTTON -->
 </body>
 </html>
 
@@ -3069,3 +3265,23 @@ target="_blank">
 </a>
 
 <!-- CAPCUT PRO UPGRADE END -->
+
+<script>
+document.addEventListener("DOMContentLoaded", function(){
+
+  document.querySelectorAll(".template-btn").forEach(function(button){
+
+    button.addEventListener("click", function(){
+
+      const id = button.dataset.templateId;
+
+      if(id){
+        window.location.href = "template.html?id=" + encodeURIComponent(id);
+      }
+
+    });
+
+  });
+
+});
+</script>

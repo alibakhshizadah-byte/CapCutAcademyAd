@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>قالب CapCut | کپ‌کات آکادمی</title>
+
+<style>
+*{box-sizing:border-box}
+body{
+margin:0;
+font-family:Tahoma,Arial,sans-serif;
+background:#07070b;
+color:#fff;
+min-height:100vh;
+}
+.container{
+width:min(1000px,92%);
+margin:auto;
+padding:35px 0;
+}
+.back{
+display:inline-block;
+color:#aaa;
+text-decoration:none;
+margin-bottom:25px;
+}
+.hero{
+background:linear-gradient(145deg,#11111b,#09090d);
+border:1px solid #29293a;
+border-radius:25px;
+padding:30px;
+box-shadow:0 20px 60px #0008;
+}
+.badge{
+display:inline-block;
+padding:7px 14px;
+border-radius:30px;
+background:#21134c;
+color:#b995ff;
+font-size:13px;
+}
+h1{
+font-size:38px;
+margin:18px 0 10px;
+}
+.description{
+color:#bdbdc8;
+line-height:2;
+font-size:16px;
+}
+.preview{
+margin-top:25px;
+height:360px;
+border-radius:20px;
+display:flex;
+align-items:center;
+justify-content:center;
+background:
+radial-gradient(circle at 30% 30%,#6b21a855,transparent 35%),
+radial-gradient(circle at 70% 70%,#06b6d455,transparent 35%),
+#11111a;
+font-size:70px;
+}
+.info{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:15px;
+margin-top:20px;
+}
+.box{
+background:#111119;
+border:1px solid #252532;
+padding:18px;
+border-radius:16px;
+}
+.box small{color:#888}
+.box strong{
+display:block;
+margin-top:8px;
+}
+.use{
+display:block;
+margin-top:25px;
+padding:16px;
+text-align:center;
+border-radius:15px;
+text-decoration:none;
+font-weight:bold;
+color:#fff;
+background:linear-gradient(90deg,#7c3aed,#06b6d4);
+}
+@media(max-width:650px){
+h1{font-size:28px}
+.preview{height:250px}
+.info{grid-template-columns:1fr}
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<a class="back" href="index.html">← بازگشت به صفحه اصلی</a>
+
+<div class="hero">
+
+<span class="badge" id="category">CapCut Template</span>
+
+<h1 id="title">در حال بارگذاری...</h1>
+
+<p class="description" id="description"></p>
+
+<div class="preview" id="preview">CAPCUT</div>
+
+<div class="info">
+<div class="box">
+<small>دسته‌بندی</small>
+<strong id="categoryInfo">-</strong>
+</div>
+
+<div class="box">
+<small>سطح</small>
+<strong id="level">حرفه‌ای</strong>
+</div>
+
+<div class="box">
+<small>مناسب برای</small>
+<strong id="usage">موبایل</strong>
+</div>
+</div>
+
+<a class="use" href="https://t.me/CAPCUTACADEMY12" target="_blank">
+دریافت قالب و مشاهده آموزش
+</a>
+
+</div>
+</div>
+
+<script>
+
+const templates = {
+
+"reels-viral":{
+title:"Reels Viral",
+category:"Reels",
+description:"یک قالب سریع و جذاب برای ساخت ویدیوهای کوتاه اینستاگرام و Reels.",
+icon:"REELS"
+},
+
+"gaming-velocity":{
+title:"Gaming Velocity",
+category:"Gaming",
+description:"قالب مناسب ادیت‌های گیمینگ، سرعتی و ویدیوهای اکشن.",
+icon:"GAMING"
+},
+
+"superhero-edit":{
+title:"Superhero Edit",
+category:"Superhero",
+description:"قالب مناسب ساخت ادیت‌های سینمایی و ابرقهرمانی با CapCut.",
+icon:"HERO"
+}
+
+};
+
+const params = new URLSearchParams(window.location.search);
+const id = params.get("id");
+
+const template = templates[id];
+
+if(template){
+
+document.title = template.title + " | کپ‌کات آکادمی";
+
+document.getElementById("title").textContent = template.title;
+document.getElementById("description").textContent = template.description;
+document.getElementById("category").textContent = template.category;
+document.getElementById("categoryInfo").textContent = template.category;
+document.getElementById("preview").textContent = template.icon;
+
+}else{
+
+document.getElementById("title").textContent = "قالب پیدا نشد";
+document.getElementById("description").textContent =
+"این قالب وجود ندارد یا لینک آن اشتباه است.";
+
+document.querySelector(".use").style.display="none";
+
+}
+
+</script>
+
+</body>
+</html>
