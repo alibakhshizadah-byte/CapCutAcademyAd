@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>پنل مدیریت تبلیغات</title>
+
+<style>
+*{box-sizing:border-box}
+body{
+margin:0;
+font-family:Tahoma,Arial,sans-serif;
+background:#08090e;
+color:#fff;
+min-height:100vh;
+}
+.wrap{
+width:min(1000px,94%);
+margin:30px auto;
+}
+.header{
+padding:22px;
+border-radius:24px;
+background:linear-gradient(135deg,#171a27,#101119);
+border:1px solid #ffffff12;
+margin-bottom:18px;
+}
+.header h1{margin:0 0 8px}
+.header p{margin:0;color:#aaa}
+.panel{
+background:#11131c;
+border:1px solid #ffffff12;
+border-radius:24px;
+padding:22px;
+margin-bottom:18px;
+}
+.grid{
+display:grid;
+grid-template-columns:repeat(2,1fr);
+gap:14px;
+}
+.field{
+display:flex;
+flex-direction:column;
+gap:7px;
+}
+.field.full{grid-column:1/-1}
+label{font-size:13px;color:#bbb}
+input,select,textarea{
+width:100%;
+padding:13px;
+border-radius:12px;
+border:1px solid #ffffff18;
+background:#191c27;
+color:#fff;
+outline:none;
+font-family:inherit;
+}
+textarea{min-height:100px;resize:vertical}
+input:focus,select:focus,textarea:focus{
+border-color:#ff4d8d;
+}
+button{
+border:0;
+padding:13px 18px;
+border-radius:13px;
+cursor:pointer;
+font-family:inherit;
+font-weight:bold;
+}
+.primary{
+background:linear-gradient(90deg,#ff7a00,#ff2f68);
+color:#fff;
+}
+.secondary{
+background:#242735;
+color:#fff;
+}
+.danger{
+background:#7e2638;
+color:#fff;
+}
+.actions{
+display:flex;
+gap:10px;
+margin-top:18px;
+flex-wrap:wrap;
+}
+.notice{
+padding:14px;
+border-radius:14px;
+background:#181b26;
+color:#bbb;
+margin-bottom:15px;
+font-size:13px;
+line-height:1.8;
+}
+.ads{
+display:grid;
+gap:12px;
+}
+.ad{
+padding:17px;
+border-radius:18px;
+background:#191b26;
+border:1px solid #ffffff12;
+}
+.ad-top{
+display:flex;
+justify-content:space-between;
+gap:10px;
+align-items:center;
+}
+.badge{
+padding:5px 9px;
+border-radius:20px;
+font-size:11px;
+background:#243d2c;
+color:#8ff0a8;
+}
+.badge.off{
+background:#3b2025;
+color:#ff9aa8;
+}
+.ad h3{margin:8px 0}
+.ad p{margin:5px 0;color:#aaa;font-size:13px}
+.ad a{
+color:#ff7fa8;
+word-break:break-all;
+}
+.small-actions{
+display:flex;
+gap:8px;
+margin-top:12px;
+}
+.login{
+max-width:430px;
+margin:80px auto;
+}
+.hidden{display:none}
+.empty{
+text-align:center;
+padding:30px;
+color:#888;
+}
+@media(max-width:650px){
+.grid{grid-template-columns:1fr}
+.field.full{grid-column:auto}
+.wrap{margin:15px auto}
+}
+</style>
+</head>
+
+<body>
+
+<div class="wrap">
+
+<div id="loginBox" class="panel login">
+
+<h1>🔐 ورود مدیریت</h1>
+
+<p style="color:#aaa">
+این بخش برای مدیریت شخصی تبلیغات سایت است.
+</p>
+
+<div class="field">
+<label>رمز مدیریت</label>
+<input id="password" type="password" placeholder="رمز را وارد کنید">
+</div>
+
+<div class="actions">
+<button class="primary" onclick="login()">ورود به پنل</button>
+</div>
+
+<p id="loginError" style="color:#ff6d86"></p>
+
+</div>
+
+<div id="adminPanel" class="hidden">
+
+<div class="header">
+<h1>📢 مدیریت تبلیغات</h1>
+<p>CAPCUT ACADEMY — پنل مدیریت جایگاه‌های تبلیغاتی</p>
+</div>
+
+<div class="panel">
+
+<div class="notice">
+تبلیغات این پنل توسط مدیر اضافه می‌شوند و می‌توانند رایگان باشند.
+کانال اصلی CAPCUT ACADEMY از سیستم تبلیغات جداست.
+</div>
+
+<h2 id="formTitle">➕ افزودن تبلیغ</h2>
+
+<div class="grid">
+
+<div class="field">
+<label>نام تبلیغ</label>
+<input id="name" placeholder="مثلاً کانال آموزشی">
+</div>
+
+<div class="field">
+<label>نوع</label>
+<select id="type">
+<option>کانال</option>
+<option>گروه</option>
+<option>ربات</option>
+<option>سایت</option>
+<option>اپلیکیشن</option>
+<option>بازی</option>
+<option>کسب‌وکار</option>
+<option>سایر</option>
+</select>
+</div>
+
+<div class="field full">
+<label>لینک</label>
+<input id="url" placeholder="https://...">
+</div>
+
+<div class="field full">
+<label>توضیحات</label>
+<textarea id="description" placeholder="توضیح کوتاه درباره تبلیغ"></textarea>
+</div>
+
+<div class="field">
+<label>تاریخ شروع</label>
+<input id="start" type="date">
+</div>
+
+<div class="field">
+<label>تاریخ پایان</label>
+<input id="end" type="date">
+</div>
+
+</div>
+
+<div class="actions">
+<button class="primary" onclick="saveAd()">💾 ذخیره تبلیغ</button>
+<button class="secondary" onclick="clearForm()">پاک کردن فرم</button>
+</div>
+
+</div>
+
+<div class="panel">
+
+<div style="display:flex;justify-content:space-between;align-items:center;gap:10px">
+<h2>📋 تبلیغات ثبت‌شده</h2>
+<button class="secondary" onclick="exportAds()">⬇️ دریافت ads.json</button>
+</div>
+
+<div id="ads" class="ads"></div>
+
+</div>
+
+</div>
+
+</div>
+
+<script>
+
+const ADMIN_PASSWORD="CAPCUT_ADMIN_2026";
+
+let ads=JSON.parse(localStorage.getItem("capcut_admin_ads")||"[]");
+let editing=-1;
+
+function login(){
+
+const password=document.getElementById("password").value;
+
+if(password!==ADMIN_PASSWORD){
+
+document.getElementById("loginError").textContent=
+"❌ رمز مدیریت اشتباه است.";
+
+return;
+}
+
+document.getElementById("loginBox").classList.add("hidden");
+document.getElementById("adminPanel").classList.remove("hidden");
+
+render();
+
+}
+
+function save(){
+
+localStorage.setItem(
+"capcut_admin_ads",
+JSON.stringify(ads)
+);
+
+}
+
+function saveAd(){
+
+const name=document.getElementById("name").value.trim();
+const type=document.getElementById("type").value;
+const url=document.getElementById("url").value.trim();
+const description=document.getElementById("description").value.trim();
+const start=document.getElementById("start").value;
+const end=document.getElementById("end").value;
+
+if(!name||!url||!start||!end){
+
+alert("لطفاً نام، لینک و تاریخ‌ها را وارد کنید.");
+return;
+}
+
+if(start>end){
+
+alert("تاریخ پایان نمی‌تواند قبل از تاریخ شروع باشد.");
+return;
+}
+
+const item={
+name,
+type,
+url,
+description,
+start,
+end,
+active:true
+};
+
+if(editing===-1){
+
+ads.push(item);
+
+}else{
+
+ads[editing]=item;
+editing=-1;
+
+}
+
+save();
+clearForm();
+render();
+
+alert("✅ تبلیغ ذخیره شد.");
+
+}
+
+function editAd(i){
+
+const ad=ads[i];
+
+document.getElementById("name").value=ad.name;
+document.getElementById("type").value=ad.type;
+document.getElementById("url").value=ad.url;
+document.getElementById("description").value=ad.description||"";
+document.getElementById("start").value=ad.start;
+document.getElementById("end").value=ad.end;
+
+editing=i;
+
+document.getElementById("formTitle").textContent=
+"✏️ ویرایش تبلیغ";
+
+window.scrollTo({top:0,behavior:"smooth"});
+
+}
+
+function deleteAd(i){
+
+if(!confirm("این تبلیغ حذف شود؟"))return;
+
+ads.splice(i,1);
+
+save();
+render();
+
+}
+
+function toggleAd(i){
+
+ads[i].active=!ads[i].active;
+
+save();
+render();
+
+}
+
+function clearForm(){
+
+["name","url","description","start","end"]
+.forEach(id=>document.getElementById(id).value="");
+
+editing=-1;
+
+document.getElementById("formTitle").textContent=
+"➕ افزودن تبلیغ";
+
+}
+
+function render(){
+
+const box=document.getElementById("ads");
+
+if(!ads.length){
+
+box.innerHTML=
+'<div class="empty">هنوز تبلیغی ثبت نشده است.</div>';
+
+return;
+}
+
+box.innerHTML=ads.map((ad,i)=>`
+
+<div class="ad">
+
+<div class="ad-top">
+
+<strong>${escapeHTML(ad.name)}</strong>
+
+<span class="badge ${ad.active?"":"off"}">
+${ad.active?"فعال":"غیرفعال"}
+</span>
+
+</div>
+
+<p>نوع: ${escapeHTML(ad.type)}</p>
+
+<p>${escapeHTML(ad.description||"بدون توضیح")}</p>
+
+<p>
+<a href="${escapeAttr(ad.url)}" target="_blank">
+${escapeHTML(ad.url)}
+</a>
+</p>
+
+<p>
+📅 ${ad.start} تا ${ad.end}
+</p>
+
+<div class="small-actions">
+
+<button class="secondary" onclick="editAd(${i})">
+✏️ ویرایش
+</button>
+
+<button class="secondary" onclick="toggleAd(${i})">
+${ad.active?"🔴 غیرفعال":"🟢 فعال"}
+</button>
+
+<button class="danger" onclick="deleteAd(${i})">
+🗑️ حذف
+</button>
+
+</div>
+
+</div>
+
+`).join("");
+
+}
+
+function exportAds(){
+
+const active=ads.find(a=>a.active);
+
+const output=active?{
+active:true,
+name:active.name,
+type:active.type,
+url:active.url,
+description:active.description,
+start:active.start+"T00:00:00+04:30",
+end:active.end+"T23:59:59+04:30"
+}:{
+active:false
+};
+
+const blob=new Blob(
+[JSON.stringify(output,null,2)],
+{type:"application/json"}
+);
+
+const a=document.createElement("a");
+
+a.href=URL.createObjectURL(blob);
+a.download="ads.json";
+a.click();
+
+URL.revokeObjectURL(a.href);
+
+}
+
+function escapeHTML(value){
+
+return String(value)
+.replaceAll("&","&amp;")
+.replaceAll("<","&lt;")
+.replaceAll(">","&gt;")
+.replaceAll('"',"&quot;")
+.replaceAll("'","&#039;");
+
+}
+
+function escapeAttr(value){
+
+return escapeHTML(value)
+.replaceAll("`","&#096;");
+
+}
+
+</script>
+
+</body>
+</html>
