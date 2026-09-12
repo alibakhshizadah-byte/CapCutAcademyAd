@@ -3508,6 +3508,944 @@ updateRewards();
 </section>
 <!-- USER REWARDS SYSTEM END -->
 
+
+<!-- CAPCUT ACADEMY ACTIVITY CENTER START -->
+<section id="activityCenter">
+
+<style>
+.activity-center{
+width:min(1180px,94%);
+margin:40px auto;
+padding:26px;
+border-radius:30px;
+background:
+radial-gradient(circle at 10% 0%,#ff7a0018,transparent 30%),
+radial-gradient(circle at 90% 100%,#8a2be218,transparent 30%),
+linear-gradient(145deg,#111827,#080b12);
+border:1px solid #ffffff18;
+box-shadow:0 25px 80px #0009;
+overflow:hidden;
+font-family:Tahoma,Arial,sans-serif;
+}
+
+.activity-title{
+text-align:center;
+margin-bottom:24px;
+}
+
+.activity-title .icon{
+font-size:48px;
+display:block;
+margin-bottom:8px;
+filter:drop-shadow(0 8px 18px #ff790055);
+}
+
+.activity-title h2{
+margin:0;
+font-size:28px;
+}
+
+.activity-title p{
+margin:8px 0 0;
+color:#9da8ba;
+font-size:13px;
+}
+
+.player-card{
+display:grid;
+grid-template-columns:1.2fr 2fr;
+gap:18px;
+margin-bottom:18px;
+}
+
+.profile-card{
+padding:20px;
+border-radius:23px;
+background:#ffffff08;
+border:1px solid #ffffff12;
+}
+
+.profile-top{
+display:flex;
+align-items:center;
+gap:15px;
+}
+
+.avatar{
+width:70px;
+height:70px;
+display:flex;
+align-items:center;
+justify-content:center;
+border-radius:22px;
+font-size:42px;
+background:linear-gradient(145deg,#ff9800,#ff2468);
+box-shadow:0 10px 30px #ff4d0038;
+}
+
+.profile-name{
+font-size:18px;
+font-weight:bold;
+}
+
+.level-name{
+margin-top:6px;
+font-size:12px;
+color:#ffb347;
+}
+
+.xp{
+margin-top:18px;
+}
+
+.xp-head{
+display:flex;
+justify-content:space-between;
+font-size:11px;
+color:#aab3c2;
+}
+
+.xp-bar{
+height:9px;
+margin-top:7px;
+background:#292f3b;
+border-radius:99px;
+overflow:hidden;
+}
+
+.xp-bar div{
+height:100%;
+width:0;
+background:linear-gradient(90deg,#ffd000,#ff6a00,#ff2877);
+transition:.5s;
+}
+
+.stats{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:9px;
+margin-top:18px;
+}
+
+.stat{
+padding:12px 5px;
+text-align:center;
+border-radius:15px;
+background:#080c14;
+}
+
+.stat b{
+display:block;
+font-size:19px;
+margin-bottom:3px;
+}
+
+.stat small{
+color:#8993a7;
+font-size:10px;
+}
+
+.missions{
+padding:20px;
+border-radius:23px;
+background:#ffffff08;
+border:1px solid #ffffff12;
+}
+
+.box-title{
+display:flex;
+align-items:center;
+justify-content:space-between;
+margin-bottom:12px;
+}
+
+.box-title h3{
+margin:0;
+font-size:18px;
+}
+
+.badge{
+padding:6px 10px;
+border-radius:99px;
+background:#ff8a0018;
+color:#ffb13b;
+font-size:10px;
+}
+
+.mission{
+display:flex;
+align-items:center;
+gap:11px;
+padding:12px;
+margin:8px 0;
+border-radius:16px;
+background:#080c14;
+border:1px solid transparent;
+transition:.25s;
+}
+
+.mission:hover{
+border-color:#ff8a0038;
+transform:translateY(-2px);
+}
+
+.mission-icon{
+font-size:27px;
+}
+
+.mission-info{
+flex:1;
+}
+
+.mission-info strong{
+font-size:12px;
+display:block;
+}
+
+.mission-info small{
+display:block;
+color:#788398;
+font-size:10px;
+margin-top:4px;
+}
+
+.mission button{
+border:0;
+padding:9px 12px;
+border-radius:12px;
+font-family:inherit;
+font-size:10px;
+font-weight:bold;
+color:#fff;
+background:linear-gradient(90deg,#ff8500,#ff286c);
+}
+
+.mission button.done{
+background:#26303e;
+color:#8e99aa;
+}
+
+.activity-bottom{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:18px;
+}
+
+.daily-box,
+.wheel-box{
+padding:20px;
+border-radius:23px;
+background:#ffffff08;
+border:1px solid #ffffff12;
+text-align:center;
+}
+
+.daily-icon{
+font-size:52px;
+margin:5px;
+}
+
+.streak{
+font-size:13px;
+color:#ffae32;
+font-weight:bold;
+}
+
+.claim-btn,
+.spin-btn{
+width:100%;
+margin-top:13px;
+padding:14px;
+border:0;
+border-radius:15px;
+color:white;
+font-family:inherit;
+font-weight:bold;
+background:linear-gradient(90deg,#ff8a00,#ff236b);
+}
+
+.claim-btn:disabled,
+.spin-btn:disabled{
+opacity:.4;
+}
+
+.wheel{
+width:145px;
+height:145px;
+margin:12px auto;
+border-radius:50%;
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:38px;
+background:conic-gradient(
+#ff7a00 0 16.6%,
+#ffcc00 16.6% 33.2%,
+#ff3970 33.2% 49.8%,
+#7d4cff 49.8% 66.4%,
+#00b8d9 66.4% 83%,
+#49c96d 83% 100%
+);
+box-shadow:0 12px 35px #0009;
+border:7px solid #111722;
+transition:transform 1.2s cubic-bezier(.17,.67,.12,1);
+}
+
+.wheel span{
+width:75px;
+height:75px;
+display:flex;
+align-items:center;
+justify-content:center;
+border-radius:50%;
+background:#101521;
+}
+
+.unlocks{
+margin-top:18px;
+padding:20px;
+border-radius:23px;
+background:#ffffff08;
+border:1px solid #ffffff12;
+}
+
+.unlock-grid{
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:9px;
+}
+
+.unlock{
+padding:13px 6px;
+border-radius:15px;
+background:#080c14;
+text-align:center;
+opacity:.5;
+}
+
+.unlock.open{
+opacity:1;
+border:1px solid #ff9b2738;
+}
+
+.unlock b{
+display:block;
+font-size:22px;
+margin-bottom:5px;
+}
+
+.unlock small{
+font-size:9px;
+color:#aeb7c6;
+}
+
+.activity-message{
+min-height:20px;
+margin-top:14px;
+text-align:center;
+font-size:12px;
+color:#ffbd58;
+font-weight:bold;
+}
+
+@media(max-width:750px){
+
+.activity-center{
+padding:18px 12px;
+}
+
+.player-card,
+.activity-bottom{
+grid-template-columns:1fr;
+}
+
+.unlock-grid{
+grid-template-columns:repeat(2,1fr);
+}
+
+.activity-title h2{
+font-size:23px;
+}
+
+}
+</style>
+
+<div class="activity-center">
+
+<div class="activity-title">
+<span class="icon">🎮</span>
+<h2>مرکز فعالیت من</h2>
+<p>هر روز فعالیت کن، امتیاز بگیر، سطح خودت را بالا ببر.</p>
+</div>
+
+<div class="player-card">
+
+<div class="profile-card">
+
+<div class="profile-top">
+
+<div class="avatar" id="activityAvatar">🎬</div>
+
+<div>
+<div class="profile-name">سازنده CAPCUT</div>
+<div class="level-name" id="activityLevelName">
+تازه‌وارد • LEVEL 1
+</div>
+</div>
+
+</div>
+
+<div class="xp">
+
+<div class="xp-head">
+<span>پیشرفت سطح</span>
+<span id="activityXPText">0 / 100</span>
+</div>
+
+<div class="xp-bar">
+<div id="activityXP"></div>
+</div>
+
+</div>
+
+<div class="stats">
+
+<div class="stat">
+<b>⭐ <span id="activityPoints">0</span></b>
+<small>امتیاز</small>
+</div>
+
+<div class="stat">
+<b>🔥 <span id="activityStreak">0</span></b>
+<small>روز متوالی</small>
+</div>
+
+<div class="stat">
+<b>🏆 <span id="activityLevel">1</span></b>
+<small>سطح</small>
+</div>
+
+</div>
+
+</div>
+
+<div class="missions">
+
+<div class="box-title">
+<h3>🎯 مأموریت‌های امروز</h3>
+<span class="badge" id="missionCount">0 / 3</span>
+</div>
+
+<div class="mission">
+<div class="mission-icon">📢</div>
+<div class="mission-info">
+<strong>بازدید از CAPCUT ACADEMY</strong>
+<small id="visitMissionStatus">بازدید کن و بعد از ۱۵ ثانیه پاداش بگیر</small>
+</div>
+<button id="missionVisitBtn"
+onclick="startVisitMission()">
+🚀 بازدید
+</button>
+</div>
+
+<div class="mission">
+<div class="mission-icon">🛠️</div>
+<div class="mission-info">
+<strong>استفاده واقعی از ابزار سایت</strong>
+<small id="toolMissionStatus">یکی از ابزارهای سایت را استفاده کن</small>
+</div>
+<button id="missionToolBtn"
+onclick="startToolMission()">
+🛠️ شروع
+</button>
+</div>
+
+<div class="mission">
+<div class="mission-icon">🔥</div>
+<div class="mission-info">
+<strong>فعالیت روزانه</strong>
+<small>یک فعالیت واقعی در سایت انجام بده</small>
+</div>
+<button id="missionDailyBtn"
+onclick="startDailyMission()">
+🎯 شروع
+</button>
+</div>
+
+</div>
+
+</div>
+
+<div class="activity-bottom">
+
+<div class="daily-box">
+
+<div class="box-title">
+<h3>🎁 جایزه روزانه</h3>
+</div>
+
+<div class="daily-icon">🎁</div>
+
+<div class="streak">
+🔥 <span id="dailyStreak">0</span> روز متوالی
+</div>
+
+<p>امروز وارد شدی؟ جایزه‌ات را بگیر.</p>
+
+<button class="claim-btn"
+id="dailyClaimBtn"
+onclick="claimActivityDaily()">
+دریافت +25 ⭐
+</button>
+
+</div>
+
+<div class="wheel-box">
+
+<div class="box-title">
+<h3>🎡 چرخ شانس</h3>
+<span class="badge">روزی ۱ بار</span>
+</div>
+
+<div class="wheel" id="activityWheel">
+<span>🎁</span>
+</div>
+
+<div id="wheelResult">شانس خودت را امتحان کن!</div>
+
+<button class="spin-btn"
+id="spinActivityBtn"
+onclick="spinActivityWheel()">
+🎡 چرخاندن
+</button>
+
+</div>
+
+</div>
+
+<div class="unlocks">
+
+<div class="box-title">
+<h3>🔓 جوایز قابل باز شدن</h3>
+</div>
+
+<div class="unlock-grid">
+
+<div class="unlock" id="unlock100">
+<b>🛠️</b>
+<small>100 ⭐<br>ابزار ویژه</small>
+</div>
+
+<div class="unlock" id="unlock250">
+<b>🎬</b>
+<small>250 ⭐<br>قالب ویژه</small>
+</div>
+
+<div class="unlock" id="unlock500">
+<b>👑</b>
+<small>500 ⭐<br>نشان VIP</small>
+</div>
+
+<div class="unlock" id="unlock1000">
+<b>🏆</b>
+<small>1000 ⭐<br>MASTER</small>
+</div>
+
+</div>
+
+</div>
+
+<div class="activity-message" id="activityMessage"></div>
+
+</div>
+
+<script>
+(function(){
+
+const KEY="capcut_activity_center_v1";
+
+let data=JSON.parse(
+localStorage.getItem(KEY) ||
+'{"points":0,"streak":0,"lastLogin":"","daily":false,"wheel":false,"missions":{}}'
+);
+
+function today(){
+
+const d=new Date();
+
+return d.getFullYear()+"-"+(d.getMonth()+1)+"-"+d.getDate();
+
+}
+
+function yesterday(){
+
+const d=new Date();
+
+d.setDate(d.getDate()-1);
+
+return d.getFullYear()+"-"+(d.getMonth()+1)+"-"+d.getDate();
+
+}
+
+function save(){
+
+localStorage.setItem(KEY,JSON.stringify(data));
+
+}
+
+function level(){
+
+return Math.floor(data.points/100)+1;
+
+}
+
+function levelName(l){
+
+if(l>=10)return "👑 MASTER";
+if(l>=7)return "🔥 افسانه CAPCUT";
+if(l>=5)return "💎 استاد تدوین";
+if(l>=3)return "🎬 سازنده حرفه‌ای";
+if(l>=2)return "⚡ سازنده";
+return "🌱 تازه‌وارد";
+
+}
+
+function message(t){
+
+document.getElementById("activityMessage").textContent=t;
+
+setTimeout(function(){
+
+document.getElementById("activityMessage").textContent="";
+
+},3000);
+
+}
+
+function refresh(){
+
+const l=level();
+const progress=data.points%100;
+
+document.getElementById("activityPoints").textContent=data.points;
+document.getElementById("activityStreak").textContent=data.streak;
+document.getElementById("dailyStreak").textContent=data.streak;
+document.getElementById("activityLevel").textContent=l;
+
+document.getElementById("activityLevelName").textContent=
+levelName(l)+" • LEVEL "+l;
+
+document.getElementById("activityXPText").textContent=
+progress+" / 100";
+
+document.getElementById("activityXP").style.width=
+progress+"%";
+
+const done=Object.values(data.missions).filter(Boolean).length;
+
+document.getElementById("missionCount").textContent=
+done+" / 3";
+
+const map={
+visit:"missionVisitBtn",
+tool:"missionToolBtn",
+daily:"missionDailyBtn"
+};
+
+Object.keys(map).forEach(function(k){
+
+const b=document.getElementById(map[k]);
+
+if(data.missions[k]){
+
+b.disabled=true;
+b.classList.add("done");
+b.textContent="✅ انجام شد";
+
+}
+
+});
+
+const daily=document.getElementById("dailyClaimBtn");
+
+if(data.daily){
+
+daily.disabled=true;
+daily.textContent="✅ جایزه امروز دریافت شد";
+
+}
+
+const wheel=document.getElementById("spinActivityBtn");
+
+if(data.wheel){
+
+wheel.disabled=true;
+wheel.textContent="✅ امروز چرخیدی";
+
+}
+
+[
+[100,"unlock100"],
+[250,"unlock250"],
+[500,"unlock500"],
+[1000,"unlock1000"]
+].forEach(function(x){
+
+document.getElementById(x[1])
+.classList.toggle("open",data.points>=x[0]);
+
+});
+
+}
+
+function addPoints(n){
+
+const old=level();
+
+data.points+=n;
+
+save();
+refresh();
+
+if(level()>old){
+
+message("🏆 تبریک! به LEVEL "+level()+" رسیدی!");
+
+}else{
+
+message("⭐ +"+n+" امتیاز گرفتی!");
+
+}
+
+}
+
+window.startVisitMission=function(){
+
+if(data.missions.visit)return;
+
+data.visitStarted=Date.now();
+
+window.open(
+"https://t.me/CAPCUTACADEMY12",
+"_blank"
+);
+
+const b=document.getElementById("missionVisitBtn");
+const st=document.getElementById("visitMissionStatus");
+
+b.disabled=true;
+b.textContent="⏳ در حال بررسی...";
+st.textContent="۱۵ ثانیه بعد برگرد و پاداش را دریافت کن.";
+
+setTimeout(function(){
+
+if(data.missions.visit)return;
+
+b.disabled=false;
+b.textContent="⭐ دریافت +10";
+st.textContent="زمان بازدید کامل شد.";
+
+b.onclick=function(){
+
+if(data.missions.visit)return;
+
+data.missions.visit=true;
+addPoints(10);
+save();
+refresh();
+
+};
+
+},15000);
+
+};
+
+window.startToolMission=function(){
+
+if(data.missions.tool)return;
+
+sessionStorage.setItem(
+"capcut_tool_mission",
+"started"
+);
+
+document.getElementById("toolMissionStatus").textContent=
+"حالا یکی از ابزارهای سایت را واقعاً استفاده کن.";
+
+const b=document.getElementById("missionToolBtn");
+
+b.textContent="🔎 انتخاب ابزار";
+
+b.onclick=function(){
+
+const tools=document.querySelectorAll(
+'a[href],button'
+);
+
+let target=null;
+
+for(const el of tools){
+
+const text=(el.textContent||"").trim();
+
+if(
+text &&
+text!=="🛠️ انتخاب ابزار" &&
+text!=="🎯 شروع" &&
+text!=="🚀 بازدید" &&
+text!=="🎁 دریافت +25 ⭐" &&
+text!=="🎡 چرخاندن"
+){
+
+if(
+text.includes("ابزار") ||
+text.includes("قالب") ||
+text.includes("ایده") ||
+text.includes("ویرایش")
+){
+
+target=el;
+break;
+
+}
+
+}
+
+}
+
+if(target){
+
+target.scrollIntoView({
+behavior:"smooth",
+block:"center"
+});
+
+document.getElementById("toolMissionStatus").textContent=
+"بعد از استفاده واقعی از ابزار، دوباره این بخش را باز کن.";
+
+b.textContent="⭐ بررسی استفاده";
+
+b.onclick=function(){
+
+data.missions.tool=true;
+addPoints(15);
+save();
+refresh();
+
+};
+
+}else{
+
+document.getElementById("toolMissionStatus").textContent=
+"ابزار مناسبی پیدا نشد؛ از یکی از ابزارهای سایت استفاده کن.";
+
+}
+
+};
+
+};
+
+window.startDailyMission=function(){
+
+if(data.missions.daily)return;
+
+data.missions.daily=true;
+
+addPoints(20);
+
+save();
+refresh();
+
+};
+
+window.activityMission=function(name,n){
+
+if(data.missions[name])return;
+
+data.missions[name]=true;
+
+addPoints(n);
+
+};
+
+window.claimActivityDaily=function(){
+
+if(data.daily)return;
+
+data.daily=true;
+
+const t=today();
+
+if(data.lastLogin===yesterday()){
+
+data.streak++;
+
+}else if(data.lastLogin!==t){
+
+data.streak=1;
+
+}
+
+data.lastLogin=t;
+
+save();
+
+addPoints(25);
+
+};
+
+window.spinActivityWheel=function(){
+
+if(data.wheel)return;
+
+data.wheel=true;
+
+const prizes=[5,10,15,25,50,100];
+
+const prize=
+prizes[Math.floor(Math.random()*prizes.length)];
+
+const wheel=document.getElementById("activityWheel");
+
+const rotations=720+Math.floor(Math.random()*360);
+
+wheel.style.transform="rotate("+rotations+"deg)";
+
+setTimeout(function(){
+
+document.getElementById("wheelResult").textContent=
+"🎉 جایزه تو: +"+prize+" ⭐";
+
+addPoints(prize);
+
+},1200);
+
+save();
+
+refresh();
+
+};
+
+const t=today();
+
+if(data.lastLogin!==t){
+
+data.daily=false;
+data.wheel=false;
+data.missions={};
+
+save();
+
+}
+
+refresh();
+
+})();
+</script>
+
+</section>
+<!-- CAPCUT ACADEMY ACTIVITY CENTER END -->
+
 </body>
 </html>
 
