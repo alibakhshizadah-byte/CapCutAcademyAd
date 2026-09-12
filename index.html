@@ -1201,6 +1201,114 @@ body:after{
 </script>
 <!-- END CAPCUT ACADEMY SEO -->
 
+
+<style id="CAPCUT-FINAL-UPGRADE">
+.final-tools{
+width:min(1000px,94%);
+margin:30px auto;
+display:grid;
+grid-template-columns:repeat(2,1fr);
+gap:16px;
+}
+
+.final-card{
+position:relative;
+overflow:hidden;
+padding:24px;
+border-radius:26px;
+background:
+linear-gradient(135deg,#171923,#0e1017);
+border:1px solid #ffffff12;
+box-shadow:0 18px 45px #0008;
+transition:.25s;
+}
+
+.final-card:hover{
+transform:translateY(-5px);
+border-color:#ff4d8d55;
+}
+
+.final-icon{
+font-size:42px;
+margin-bottom:12px;
+}
+
+.final-card h2{
+margin:0 0 8px;
+}
+
+.final-card p{
+color:#aaa;
+line-height:1.9;
+font-size:14px;
+}
+
+.final-btn{
+display:inline-block;
+margin-top:10px;
+padding:12px 18px;
+border-radius:14px;
+text-decoration:none;
+color:#fff;
+font-weight:bold;
+background:linear-gradient(90deg,#ff7a00,#ff2f68);
+}
+
+.daily-box{
+width:min(1000px,94%);
+margin:30px auto;
+padding:25px;
+border-radius:26px;
+background:linear-gradient(135deg,#20172a,#10121b);
+border:1px solid #ffffff12;
+text-align:center;
+}
+
+.daily-result{
+margin-top:18px;
+padding:18px;
+border-radius:18px;
+background:#090b11;
+font-size:17px;
+line-height:2;
+}
+
+.final-game{
+width:min(1000px,94%);
+margin:30px auto;
+padding:26px;
+border-radius:28px;
+background:
+radial-gradient(circle at top,#3b2149,#11131b 55%);
+border:1px solid #ffffff14;
+text-align:center;
+box-shadow:0 20px 60px #0009;
+}
+
+.game-preview{
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:10px;
+margin:20px 0;
+}
+
+.game-item{
+padding:18px 8px;
+border-radius:18px;
+background:#191b26;
+font-size:30px;
+}
+
+@media(max-width:650px){
+.final-tools{
+grid-template-columns:1fr;
+}
+.game-preview{
+grid-template-columns:repeat(2,1fr);
+}
+}
+</style>
+
 </head>
 
 <body>
@@ -2454,6 +2562,499 @@ font-weight:bold;
 <a href="booking.html">رزرو جایگاه تبلیغ</a>
 </section>
 <!-- AD BOOKING BUTTON -->
+
+<!-- CAPCUT FINAL UPGRADE -->
+
+
+
+<section class="daily-box" id="dailyChallenge">
+
+<h2>🎯 چالش و ایده روزانه</h2>
+
+<p>
+هر بار یکی از گزینه‌ها را انتخاب کن و یک ایده جدید بگیر.
+</p>
+
+<button class="final-btn" onclick="generateDaily()">
+✨ تولید ایده
+</button>
+
+<div class="daily-result" id="dailyResult">
+برای شروع روی دکمه بالا بزن.
+</div>
+
+</section>
+
+
+
+<!-- END CAPCUT FINAL UPGRADE -->
+
+
+<script id="CAPCUT-FINAL-JS">
+
+const finalIdeas=[
+"یک ویدیوی کوتاه قبل و بعد از ادیت بساز.",
+"یک ترنزیشن سریع با ضرب آهنگ امتحان کن.",
+"یک ویدیوی سینمایی ۱۰ ثانیه‌ای بساز.",
+"از یک افکت ساده برای تغییر فضای ویدیو استفاده کن.",
+"یک ادیت گیمینگ با ضرب موسیقی بساز.",
+"یک ویدیوی انگیزشی کوتاه تولید کن."
+];
+
+const finalChallenges=[
+"امروز یک ویدیو را فقط با ۳ افکت ادیت کن.",
+"یک ویدیو بساز که در ۵ ثانیه اول مخاطب را جذب کند.",
+"یک ترنزیشن جدید یاد بگیر و استفاده کن.",
+"یک ادیت بدون استفاده از فیلتر آماده بساز.",
+"یک ویدیوی ۱۵ ثانیه‌ای سینمایی بساز."
+];
+
+function generateDaily(){
+
+const idea=
+finalIdeas[Math.floor(Math.random()*finalIdeas.length)];
+
+const challenge=
+finalChallenges[Math.floor(Math.random()*finalChallenges.length)];
+
+document.getElementById("dailyResult").innerHTML=
+"💡 <b>ایده:</b> "+idea+
+"<br><br>"+
+"🎯 <b>چالش:</b> "+challenge;
+
+}
+
+</script>
+
+
+<!-- USEFUL TOOLS START -->
+<section id="usefulTools" class="tools-section">
+
+<style>
+.tools-section{
+width:min(1200px,94%);
+margin:45px auto;
+padding:28px 18px;
+border-radius:30px;
+background:linear-gradient(145deg,#101522,#080b12);
+border:1px solid #ffffff12;
+box-shadow:0 25px 70px #0008;
+}
+
+.tools-head{
+text-align:center;
+margin-bottom:25px;
+}
+
+.tools-head h2{
+font-size:28px;
+margin:0 0 8px;
+}
+
+.tools-head p{
+color:#aeb6c8;
+font-size:14px;
+}
+
+.tools-grid{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:15px;
+}
+
+.tool-card{
+padding:22px 15px;
+border-radius:22px;
+background:#171c28;
+border:1px solid #ffffff10;
+transition:.25s;
+cursor:pointer;
+}
+
+.tool-card:hover{
+transform:translateY(-5px);
+border-color:#ffffff30;
+box-shadow:0 15px 35px #0008;
+}
+
+.tool-icon{
+font-size:40px;
+margin-bottom:10px;
+}
+
+.tool-card h3{
+margin:5px 0;
+font-size:17px;
+}
+
+.tool-card p{
+font-size:12px;
+color:#aeb6c8;
+line-height:1.8;
+}
+
+.tool-btn{
+display:inline-block;
+margin-top:10px;
+padding:10px 16px;
+border-radius:13px;
+background:linear-gradient(90deg,#ff7a00,#ff286d);
+color:white;
+font-weight:bold;
+font-size:12px;
+}
+
+.tool-modal{
+position:fixed;
+inset:0;
+background:#000b;
+display:none;
+align-items:center;
+justify-content:center;
+z-index:9999;
+padding:15px;
+}
+
+.tool-box{
+width:min(500px,100%);
+background:#151a25;
+border:1px solid #ffffff20;
+border-radius:25px;
+padding:25px;
+box-shadow:0 30px 90px #000;
+}
+
+.tool-box h2{
+margin-top:0;
+}
+
+.tool-box textarea,
+.tool-box input{
+width:100%;
+padding:13px;
+border-radius:13px;
+border:1px solid #ffffff18;
+background:#0b0e15;
+color:white;
+font-family:inherit;
+outline:none;
+margin:7px 0;
+}
+
+.tool-box button{
+padding:12px 18px;
+border:0;
+border-radius:13px;
+background:#ff416c;
+color:white;
+font-family:inherit;
+font-weight:bold;
+margin-top:8px;
+}
+
+.tool-result{
+margin-top:15px;
+padding:14px;
+background:#0b0e15;
+border-radius:15px;
+line-height:2;
+white-space:pre-wrap;
+font-size:13px;
+}
+
+.close-tool{
+float:left;
+background:#303747!important;
+}
+
+@media(max-width:800px){
+.tools-grid{
+grid-template-columns:repeat(2,1fr);
+}
+}
+
+@media(max-width:500px){
+.tools-grid{
+grid-template-columns:1fr;
+}
+}
+</style>
+
+<div class="tools-head">
+<h2>🚀 ابزارهای کاربردی</h2>
+<p>ابزارهای رایگان برای استفاده روزانه، مستقیم داخل سایت</p>
+</div>
+
+<div class="tools-grid">
+
+<div class="tool-card" onclick="openTool('caption')">
+<div class="tool-icon">📝</div>
+<h3>تولید کپشن</h3>
+<p>برای پست یا ویدیوی خود کپشن آماده بساز.</p>
+<span class="tool-btn">استفاده</span>
+</div>
+
+<div class="tool-card" onclick="openTool('hashtags')">
+<div class="tool-icon">#️⃣</div>
+<h3>تولید هشتگ</h3>
+<p>برای موضوع خود هشتگ‌های مناسب دریافت کن.</p>
+<span class="tool-btn">استفاده</span>
+</div>
+
+<div class="tool-card" onclick="openTool('ideas')">
+<div class="tool-icon">💡</div>
+<h3>ایده‌ساز محتوا</h3>
+<p>برای ساخت پست و ویدیو ایده بگیر.</p>
+<span class="tool-btn">استفاده</span>
+</div>
+
+<div class="tool-card" onclick="openTool('title')">
+<div class="tool-icon">🎯</div>
+<h3>عنوان جذاب</h3>
+<p>عنوان‌های جذاب برای محتوای خود بساز.</p>
+<span class="tool-btn">استفاده</span>
+</div>
+
+<div class="tool-card" onclick="openTool('qr')">
+<div class="tool-icon">🔗</div>
+<h3>ساخت QR Code</h3>
+<p>لینک خود را به QR Code تبدیل کن.</p>
+<span class="tool-btn">استفاده</span>
+</div>
+
+<div class="tool-card" onclick="openTool('counter')">
+<div class="tool-icon">📊</div>
+<h3>تبدیل واحد</h3>
+<p>تبدیل سریع عددها و واحدهای پرکاربرد.</p>
+<span class="tool-btn">استفاده</span>
+</div>
+
+</div>
+
+<div class="tool-modal" id="toolModal">
+<div class="tool-box">
+
+<button class="close-tool" onclick="closeTool()">بستن</button>
+
+<h2 id="toolTitle"></h2>
+
+<div id="toolContent"></div>
+
+</div>
+</div>
+
+<script>
+
+const toolModal=document.getElementById("toolModal");
+const toolTitle=document.getElementById("toolTitle");
+const toolContent=document.getElementById("toolContent");
+
+function openTool(type){
+
+toolModal.style.display="flex";
+
+if(type==="caption"){
+
+toolTitle.textContent="📝 تولید کپشن";
+
+toolContent.innerHTML=`
+<input id="captionTopic" placeholder="موضوع پست را بنویس">
+<button onclick="makeCaption()">ساخت کپشن</button>
+<div class="tool-result" id="toolResult"></div>
+`;
+
+}
+
+if(type==="hashtags"){
+
+toolTitle.textContent="#️⃣ تولید هشتگ";
+
+toolContent.innerHTML=`
+<input id="hashTopic" placeholder="مثلاً: آموزش کامپیوتر">
+<button onclick="makeHashtags()">ساخت هشتگ</button>
+<div class="tool-result" id="toolResult"></div>
+`;
+
+}
+
+if(type==="ideas"){
+
+toolTitle.textContent="💡 ایده‌ساز محتوا";
+
+toolContent.innerHTML=`
+<input id="ideaTopic" placeholder="موضوع موردنظر">
+<button onclick="makeIdeas()">تولید ایده</button>
+<div class="tool-result" id="toolResult"></div>
+`;
+
+}
+
+if(type==="title"){
+
+toolTitle.textContent="🎯 عنوان جذاب";
+
+toolContent.innerHTML=`
+<input id="titleTopic" placeholder="موضوع محتوا">
+<button onclick="makeTitles()">ساخت عنوان</button>
+<div class="tool-result" id="toolResult"></div>
+`;
+
+}
+
+if(type==="qr"){
+
+toolTitle.textContent="🔗 ساخت QR Code";
+
+toolContent.innerHTML=`
+<input id="qrLink" placeholder="https://example.com">
+<button onclick="makeQR()">ساخت QR Code</button>
+<div class="tool-result" id="toolResult"></div>
+`;
+
+}
+
+if(type==="counter"){
+
+toolTitle.textContent="📊 تبدیل واحد";
+
+toolContent.innerHTML=`
+<input id="unitValue" type="number" placeholder="عدد">
+
+<select id="unitType">
+<option value="km">کیلومتر → متر</option>
+<option value="m">متر → سانتی‌متر</option>
+<option value="kg">کیلوگرم → گرم</option>
+<option value="gb">گیگابایت → مگابایت</option>
+</select>
+
+<button onclick="convertUnit()">تبدیل</button>
+
+<div class="tool-result" id="toolResult"></div>
+`;
+
+}
+
+}
+
+function closeTool(){
+toolModal.style.display="none";
+}
+
+function makeCaption(){
+
+const x=document.getElementById("captionTopic").value.trim();
+
+if(!x)return;
+
+document.getElementById("toolResult").textContent=
+`🔥 ${x}
+
+اگر این موضوع برایت جالب است، تا آخر ببین.
+نظر خودت را در کامنت بنویس.
+
+📌 برای مطالب بیشتر سایت ما را دنبال کن.`;
+
+}
+
+function makeHashtags(){
+
+const x=document.getElementById("hashTopic").value.trim();
+
+if(!x)return;
+
+const base=x.replace(/\s+/g,"");
+
+document.getElementById("toolResult").textContent=
+`#${base}
+#آموزش
+#آموزش_رایگان
+#ترفند
+#ترفند_جدید
+#محتوا
+#ویدیو
+#افغانستان
+#یادگیری
+#سایت_ما`;
+
+}
+
+function makeIdeas(){
+
+const x=document.getElementById("ideaTopic").value.trim();
+
+if(!x)return;
+
+const ideas=[
+`🎥 ۵ نکته مهم درباره ${x}`,
+`🔥 اشتباهات رایج در ${x}`,
+`💡 یک ترفند کمترشناخته‌شده درباره ${x}`,
+`📌 آموزش ${x} برای مبتدی‌ها`,
+`⚡ قبل و بعد از یادگیری ${x}`,
+`🎯 چالش ۷ روزه ${x}`,
+`❓ سوالات رایج درباره ${x}`
+];
+
+document.getElementById("toolResult").textContent=
+ideas.join("\n");
+
+}
+
+function makeTitles(){
+
+const x=document.getElementById("titleTopic").value.trim();
+
+if(!x)return;
+
+document.getElementById("toolResult").textContent=
+`🔥 ${x} را اینطوری انجام بده!
+😱 این اشتباه را درباره ${x} انجام نده
+💡 راز مهم درباره ${x}
+🚀 آموزش ${x} از صفر
+⚡ سریع‌ترین روش برای ${x}
+🎯 ۵ نکته مهم درباره ${x}`;
+
+}
+
+function makeQR(){
+
+const x=document.getElementById("qrLink").value.trim();
+
+if(!x)return;
+
+const url=
+"https://api.qrserver.com/v1/create-qr-code/?size=220x220&data="+
+encodeURIComponent(x);
+
+document.getElementById("toolResult").innerHTML=
+`<img src="${url}" style="width:220px;max-width:100%;display:block;margin:auto">
+<p>${x}</p>`;
+
+}
+
+function convertUnit(){
+
+const n=parseFloat(document.getElementById("unitValue").value);
+
+if(isNaN(n))return;
+
+const type=document.getElementById("unitType").value;
+
+let result;
+
+if(type==="km")result=n*1000+" متر";
+if(type==="m")result=n*100+" سانتی‌متر";
+if(type==="kg")result=n*1000+" گرم";
+if(type==="gb")result=n*1024+" مگابایت";
+
+document.getElementById("toolResult").textContent=result;
+
+}
+
+</script>
+
+</section>
+<!-- USEFUL TOOLS END -->
+
 </body>
 </html>
 
