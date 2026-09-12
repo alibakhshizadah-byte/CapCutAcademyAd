@@ -1289,29 +1289,229 @@ animation:adGlow 1.8s infinite;
 }
 </style>
 
+
 <section class="weekly-ad-box" id="weeklyAd">
-<h2>تبلیغ ویژه این هفته</h2>
+
+<style>
+.weekly-ad-box{
+width:min(900px,94%);
+margin:24px auto;
+padding:24px;
+border-radius:28px;
+position:relative;
+overflow:hidden;
+background:
+radial-gradient(circle at 20% 20%,#ff4d8d33,transparent 35%),
+radial-gradient(circle at 80% 80%,#7c4dff33,transparent 35%),
+linear-gradient(135deg,#11131c,#1b1725);
+border:1px solid #ffffff18;
+box-shadow:0 20px 60px #0008;
+}
+
+.weekly-ad-box:before{
+content:"";
+position:absolute;
+inset:-2px;
+border-radius:30px;
+padding:1px;
+background:linear-gradient(120deg,#ff4d8d,#7c4dff,#ff8a00,#ff4d8d);
+-webkit-mask:
+linear-gradient(#000 0 0) content-box,
+linear-gradient(#000 0 0);
+-webkit-mask-composite:xor;
+mask-composite:exclude;
+animation:adBorder 5s linear infinite;
+}
+
+@keyframes adBorder{
+to{filter:hue-rotate(360deg)}
+}
+
+.weekly-ad-content{
+position:relative;
+z-index:2;
+text-align:center;
+}
+
+.ad-label{
+display:inline-block;
+padding:7px 13px;
+border-radius:99px;
+background:#ff4d8d18;
+border:1px solid #ff4d8d55;
+color:#ff9abc;
+font-size:12px;
+font-weight:bold;
+}
+
+.weekly-ad-name{
+font-size:28px;
+font-weight:900;
+margin:14px 0 8px;
+}
+
+.weekly-ad-desc{
+color:#b9bbc8;
+line-height:1.9;
+font-size:14px;
+margin:auto;
+max-width:650px;
+}
+
+.weekly-ad-timer{
+margin:18px auto;
+display:flex;
+justify-content:center;
+gap:8px;
+font-size:17px;
+font-weight:bold;
+}
+
+.timer-box{
+padding:10px 14px;
+border-radius:14px;
+background:#080a10;
+border:1px solid #ffffff12;
+min-width:72px;
+}
+
+.timer-box small{
+display:block;
+font-size:10px;
+color:#888;
+margin-top:3px;
+}
+
+.weekly-ad-btn{
+display:inline-block;
+margin-top:8px;
+padding:15px 25px;
+border-radius:16px;
+color:#fff;
+text-decoration:none;
+font-weight:900;
+background:linear-gradient(90deg,#ff7a00,#ff2f68);
+box-shadow:0 10px 35px #ff386655;
+animation:adPulse 1.8s infinite;
+}
+
+@keyframes adPulse{
+50%{transform:scale(1.04);box-shadow:0 15px 45px #ff386688}
+}
+
+.ad-expired{
+display:none;
+}
+
+@media(max-width:600px){
+.weekly-ad-box{padding:20px}
+.weekly-ad-name{font-size:22px}
+.timer-box{min-width:60px;padding:9px 7px}
+}
+</style>
+
+<div class="weekly-ad-content">
+
+<div class="ad-label">🔥 تبلیغ ویژه این هفته</div>
+
 <div class="weekly-ad-name" id="weeklyAdName">
-کانال پیشنهادی هفته
+در حال بارگذاری...
+</div>
+
+<div class="weekly-ad-desc" id="weeklyAdDescription">
+تبلیغ در حال بارگذاری است.
 </div>
 
 <div class="weekly-ad-timer" id="weeklyAdTimer">
-در حال محاسبه...
+در حال محاسبه زمان...
 </div>
 
-<a class="weekly-ad-btn"
+<a
 id="weeklyAdButton"
+class="weekly-ad-btn"
 href="go.html"
 target="_blank"
 rel="noopener">
-Join Our Recommended Channel
+🚀 مشاهده تبلیغ
 </a>
 
-<a href="booking.html" class="advertise-link"
-style="display:block;margin-top:15px;color:#aaa;text-decoration:none;">
-تبلیغ کسب‌وکار شما در این جایگاه
-</a>
+</div>
+
 </section>
+
+<script>
+(async function(){
+
+const box=document.getElementById("weeklyAd");
+const name=document.getElementById("weeklyAdName");
+const desc=document.getElementById("weeklyAdDescription");
+const button=document.getElementById("weeklyAdButton");
+const timer=document.getElementById("weeklyAdTimer");
+
+try{
+
+const response=await fetch("ads.json?"+Date.now());
+
+if(!response.ok) throw new Error("ads.json");
+
+const ad=await response.json();
+
+if(!ad.active){
+box.style.display="none";
+return;
+}
+
+const start=new Date(ad.start);
+const end=new Date(ad.end);
+const now=new Date();
+
+if(now<start || now>end){
+
+box.style.display="none";
+return;
+}
+
+name.textContent=ad.name || "تبلیغ ویژه";
+
+desc.textContent=ad.description || "برای مشاهده این تبلیغ روی دکمه زیر بزنید.";
+
+button.href="go.html";
+
+function updateTimer(){
+
+const diff=end.getTime()-Date.now();
+
+if(diff<=0){
+box.style.display="none";
+return;
+}
+
+const days=Math.floor(diff/86400000);
+const hours=Math.floor(diff/3600000)%24;
+const minutes=Math.floor(diff/60000)%60;
+const seconds=Math.floor(diff/1000)%60;
+
+timer.innerHTML=`
+<div class="timer-box">${days}<small>روز</small></div>
+<div class="timer-box">${hours}<small>ساعت</small></div>
+<div class="timer-box">${minutes}<small>دقیقه</small></div>
+<div class="timer-box">${seconds}<small>ثانیه</small></div>
+`;
+
+}
+
+updateTimer();
+setInterval(updateTimer,1000);
+
+}catch(error){
+
+box.style.display="none";
+
+}
+
+})();
+</script>
+
 
 <div class="weekly-ad-floating">
 <a id="weeklyAdFloating"
