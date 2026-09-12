@@ -3055,6 +3055,459 @@ document.getElementById("toolResult").textContent=result;
 </section>
 <!-- USEFUL TOOLS END -->
 
+
+<!-- USER REWARDS SYSTEM START -->
+<section id="userRewardsSystem">
+
+<style>
+.rewards-section{
+width:min(1200px,94%);
+margin:35px auto;
+padding:25px 18px;
+border-radius:28px;
+background:linear-gradient(145deg,#121824,#080b12);
+border:1px solid #ffffff12;
+box-shadow:0 20px 60px #0008;
+}
+
+.rewards-head{
+text-align:center;
+margin-bottom:20px;
+}
+
+.rewards-head h2{
+margin:0 0 7px;
+font-size:25px;
+}
+
+.rewards-head p{
+margin:0;
+font-size:13px;
+color:#aeb6c8;
+}
+
+.reward-stats{
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:10px;
+margin-bottom:18px;
+}
+
+.reward-stat{
+background:#191f2c;
+border-radius:18px;
+padding:15px 8px;
+text-align:center;
+border:1px solid #ffffff10;
+}
+
+.reward-stat .big{
+font-size:25px;
+display:block;
+margin-bottom:5px;
+}
+
+.reward-stat small{
+color:#aeb6c8;
+}
+
+.reward-stat strong{
+display:block;
+margin-top:4px;
+font-size:16px;
+}
+
+.reward-grid{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:15px;
+}
+
+.reward-box{
+background:#171c28;
+border-radius:20px;
+padding:18px;
+border:1px solid #ffffff10;
+}
+
+.reward-box h3{
+margin-top:0;
+font-size:17px;
+}
+
+.mission{
+display:flex;
+align-items:center;
+gap:10px;
+padding:12px;
+margin:8px 0;
+border-radius:14px;
+background:#0d111a;
+}
+
+.mission-icon{
+font-size:25px;
+}
+
+.mission-info{
+flex:1;
+}
+
+.mission-info b{
+font-size:13px;
+}
+
+.mission-info small{
+display:block;
+color:#8993a8;
+margin-top:4px;
+}
+
+.mission button,
+.daily-btn{
+border:0;
+border-radius:12px;
+padding:9px 13px;
+background:linear-gradient(90deg,#ff8400,#ff286d);
+color:#fff;
+font-family:inherit;
+font-weight:bold;
+}
+
+.mission button.done{
+background:#263141;
+}
+
+.reward-progress{
+height:8px;
+background:#292f3d;
+border-radius:20px;
+overflow:hidden;
+margin-top:10px;
+}
+
+.reward-progress div{
+height:100%;
+width:0;
+background:linear-gradient(90deg,#ffd000,#ff5b00);
+transition:.4s;
+}
+
+.level-text{
+display:flex;
+justify-content:space-between;
+font-size:12px;
+color:#aeb6c8;
+}
+
+.daily-btn{
+width:100%;
+margin-top:10px;
+padding:13px;
+}
+
+.daily-btn:disabled{
+opacity:.45;
+}
+
+.reset-rewards{
+margin-top:12px;
+border:0;
+background:transparent;
+color:#687287;
+font-family:inherit;
+font-size:11px;
+}
+
+@media(max-width:700px){
+.reward-stats{
+grid-template-columns:repeat(2,1fr);
+}
+
+.reward-grid{
+grid-template-columns:1fr;
+}
+}
+</style>
+
+<div class="rewards-section">
+
+<div class="rewards-head">
+<h2>🏆 مرکز امتیاز و مأموریت</h2>
+<p>هر روز وارد شو، مأموریت انجام بده و سطح خودت را بالا ببر.</p>
+</div>
+
+<div class="reward-stats">
+
+<div class="reward-stat">
+<span class="big">⭐</span>
+<small>امتیاز</small>
+<strong id="rewardPoints">0</strong>
+</div>
+
+<div class="reward-stat">
+<span class="big">🏅</span>
+<small>سطح</small>
+<strong id="rewardLevel">1</strong>
+</div>
+
+<div class="reward-stat">
+<span class="big">🔥</span>
+<small>روز متوالی</small>
+<strong id="rewardStreak">0</strong>
+</div>
+
+<div class="reward-stat">
+<span class="big">🎯</span>
+<small>مأموریت</small>
+<strong id="rewardDone">0/3</strong>
+</div>
+
+</div>
+
+<div class="reward-box">
+
+<h3>📈 پیشرفت سطح</h3>
+
+<div class="level-text">
+<span>سطح <b id="levelNow">1</b></span>
+<span id="levelNeed">100 امتیاز</span>
+</div>
+
+<div class="reward-progress">
+<div id="levelProgress"></div>
+</div>
+
+</div>
+
+<div class="reward-grid">
+
+<div class="reward-box">
+
+<h3>🎁 جایزه روزانه</h3>
+
+<p>
+هر روز یک بار جایزه دریافت کن.
+</p>
+
+<button class="daily-btn" id="dailyButton" onclick="claimDailyReward()">
+دریافت +25 امتیاز
+</button>
+
+</div>
+
+<div class="reward-box">
+
+<h3>🎯 مأموریت‌های امروز</h3>
+
+<div class="mission">
+<div class="mission-icon">🌐</div>
+<div class="mission-info">
+<b>بازدید از سایت</b>
+<small>+10 امتیاز</small>
+</div>
+<button id="missionVisit" onclick="completeMission('visit')">
+انجام
+</button>
+</div>
+
+<div class="mission">
+<div class="mission-icon">🛠️</div>
+<div class="mission-info">
+<b>استفاده از یک ابزار</b>
+<small>+15 امتیاز</small>
+</div>
+<button id="missionTool" onclick="completeMission('tool')">
+انجام
+</button>
+</div>
+
+<div class="mission">
+<div class="mission-icon">🔥</div>
+<div class="mission-info">
+<b>بازدید روزانه</b>
+<small>+20 امتیاز</small>
+</div>
+<button id="missionDaily" onclick="completeMission('daily')">
+انجام
+</button>
+</div>
+
+</div>
+
+</div>
+
+<button class="reset-rewards" onclick="resetRewards()">
+ریست اطلاعات برای تست
+</button>
+
+</div>
+
+<script>
+
+const REWARD_KEY="capcut_academy_rewards";
+
+let rewards=JSON.parse(
+localStorage.getItem(REWARD_KEY) ||
+'{"points":0,"streak":0,"lastDay":"","daily":false,"missions":{}}'
+);
+
+function todayKey(){
+
+const d=new Date();
+
+return d.getFullYear()+"-"+(d.getMonth()+1)+"-"+d.getDate();
+
+}
+
+function saveRewards(){
+
+localStorage.setItem(
+REWARD_KEY,
+JSON.stringify(rewards)
+);
+
+}
+
+function getLevel(){
+
+return Math.floor(rewards.points/100)+1;
+
+}
+
+function updateRewards(){
+
+const level=getLevel();
+
+document.getElementById("rewardPoints").textContent=
+rewards.points;
+
+document.getElementById("rewardLevel").textContent=
+level;
+
+document.getElementById("levelNow").textContent=
+level;
+
+document.getElementById("rewardStreak").textContent=
+rewards.streak;
+
+const completed=
+Object.values(rewards.missions).filter(Boolean).length;
+
+document.getElementById("rewardDone").textContent=
+completed+"/3";
+
+const progress=rewards.points%100;
+
+document.getElementById("levelProgress").style.width=
+progress+"%";
+
+document.getElementById("levelNeed").textContent=
+(100-progress)+" امتیاز تا سطح بعد";
+
+if(rewards.daily){
+
+const btn=document.getElementById("dailyButton");
+
+btn.disabled=true;
+
+btn.textContent="✅ جایزه امروز دریافت شد";
+
+}
+
+for(const name of ["visit","tool","daily"]){
+
+const el=document.getElementById(
+"mission"+
+name.charAt(0).toUpperCase()+name.slice(1)
+);
+
+if(rewards.missions[name]){
+
+el.disabled=true;
+el.classList.add("done");
+el.textContent="✅ انجام شد";
+
+}
+
+}
+
+}
+
+function addPoints(amount){
+
+const oldLevel=getLevel();
+
+rewards.points+=amount;
+
+const newLevel=getLevel();
+
+saveRewards();
+updateRewards();
+
+if(newLevel>oldLevel){
+
+alert(
+"🏆 تبریک!\n\nبه سطح "+newLevel+" رسیدی!"
+);
+
+}
+
+}
+
+function claimDailyReward(){
+
+if(rewards.daily)return;
+
+rewards.daily=true;
+
+const today=todayKey();
+
+if(rewards.lastDay!==today){
+
+rewards.streak++;
+
+rewards.lastDay=today;
+
+}
+
+addPoints(25);
+
+}
+
+function completeMission(name){
+
+if(rewards.missions[name])return;
+
+rewards.missions[name]=true;
+
+const values={
+visit:10,
+tool:15,
+daily:20
+};
+
+addPoints(values[name]);
+
+}
+
+function resetRewards(){
+
+if(!confirm("اطلاعات امتیاز پاک شود؟"))return;
+
+localStorage.removeItem(REWARD_KEY);
+
+location.reload();
+
+}
+
+updateRewards();
+
+</script>
+
+</section>
+<!-- USER REWARDS SYSTEM END -->
+
 </body>
 </html>
 
