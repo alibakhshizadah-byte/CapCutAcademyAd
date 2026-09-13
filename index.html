@@ -4447,115 +4447,105 @@ refresh();
 <!-- CAPCUT ACADEMY ACTIVITY CENTER END -->
 
 
-<!-- JOKESTAN WHATSAPP CHANNEL AD -->
-<section id="jokestan-ad" class="jokestan-ad" dir="rtl">
-  <div class="jokestan-content">
-    <div class="jokestan-icon">🤣</div>
 
-    <div class="jokestan-text">
-      <div class="jokestan-badge">پیشنهاد ویژه</div>
-      <h2>🤣 جوکستان</h2>
-      <p>هر روز جوک‌های خنده‌دار و سرگرم‌کننده را در کانال واتساپ دنبال کن!</p>
-    </div>
 
-    <a
-      class="jokestan-button"
-      href="https://whatsapp.com/channel/0029Vb7HtHYHbFVDt9xBfi2N"
-      target="_blank"
-      rel="noopener noreferrer"
-    >
-      ورود به کانال
-    </a>
-  </div>
-</section>
+
+<!-- JOKESTAN FLOATING WHATSAPP BUTTON -->
+<a
+  href="https://whatsapp.com/channel/0029Vb7HtHYHbFVDt9xBfi2N"
+  class="jokestan-floating"
+  target="_blank"
+  rel="noopener noreferrer"
+  aria-label="ورود به کانال واتساپ جوکستان"
+>
+  <span class="jokestan-floating-icon">🤣</span>
+  <span class="jokestan-floating-text">
+    <strong>جوکستان</strong>
+    <small>کانال واتساپ</small>
+  </span>
+</a>
 
 <style>
-.jokestan-ad {
-  width: min(92%, 900px);
-  margin: 30px auto;
-  padding: 0;
-  border-radius: 24px;
-  overflow: hidden;
-  background: linear-gradient(135deg, #111827, #1f2937);
-  box-shadow: 0 12px 35px rgba(0,0,0,.18);
-  color: #fff;
-  font-family: inherit;
-}
+.jokestan-floating {
+  position: fixed;
+  left: 18px;
+  bottom: 22px;
+  z-index: 99999;
 
-.jokestan-content {
   display: flex;
   align-items: center;
-  gap: 20px;
-  padding: 24px;
+  gap: 10px;
+
+  padding: 10px 15px 10px 11px;
+  border-radius: 50px;
+
+  background: linear-gradient(135deg, #25D366, #128C7E);
+  color: #fff !important;
+  text-decoration: none !important;
+
+  box-shadow: 0 8px 25px rgba(0,0,0,.28);
+
+  font-family: inherit;
+
+  transition:
+    transform .2s ease,
+    box-shadow .2s ease;
 }
 
-.jokestan-icon {
-  width: 70px;
-  height: 70px;
-  min-width: 70px;
+.jokestan-floating:hover {
+  transform: translateY(-4px) scale(1.03);
+  box-shadow: 0 12px 30px rgba(0,0,0,.35);
+}
+
+.jokestan-floating-icon {
+  width: 42px;
+  height: 42px;
+
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: 20px;
-  background: rgba(255,255,255,.12);
-  font-size: 38px;
-}
 
-.jokestan-text {
-  flex: 1;
-}
+  border-radius: 50%;
+  background: rgba(255,255,255,.18);
 
-.jokestan-badge {
-  display: inline-block;
-  margin-bottom: 5px;
-  padding: 4px 10px;
-  border-radius: 20px;
-  background: rgba(255,255,255,.12);
-  font-size: 12px;
-}
-
-.jokestan-text h2 {
-  margin: 2px 0 6px;
   font-size: 25px;
 }
 
-.jokestan-text p {
-  margin: 0;
+.jokestan-floating-text {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.2;
+}
+
+.jokestan-floating-text strong {
+  font-size: 15px;
+}
+
+.jokestan-floating-text small {
+  margin-top: 3px;
+  font-size: 10px;
   opacity: .85;
-  line-height: 1.7;
 }
 
-.jokestan-button {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding: 12px 20px;
-  border-radius: 14px;
-  background: #25D366;
-  color: #fff !important;
-  text-decoration: none !important;
-  font-weight: 700;
-  white-space: nowrap;
-  transition: transform .2s, opacity .2s;
-}
-
-.jokestan-button:hover {
-  transform: translateY(-2px);
-  opacity: .9;
-}
-
-@media (max-width: 650px) {
-  .jokestan-content {
-    flex-direction: column;
-    text-align: center;
+@media (max-width: 600px) {
+  .jokestan-floating {
+    left: 12px;
+    bottom: 15px;
+    padding: 8px 12px 8px 9px;
   }
 
-  .jokestan-button {
-    width: 100%;
+  .jokestan-floating-icon {
+    width: 38px;
+    height: 38px;
+    font-size: 22px;
+  }
+
+  .jokestan-floating-text strong {
+    font-size: 14px;
   }
 }
 </style>
-<!-- END JOKESTAN WHATSAPP CHANNEL AD -->
+<!-- END JOKESTAN FLOATING WHATSAPP BUTTON -->
 
 </body>
 </html>
