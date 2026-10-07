@@ -204,11 +204,11 @@ def leaderboard():
 
 
 
+
 # ===== CAPCUT ADMIN API =====
 
 @app.get("/api/admin/stats")
 def admin_stats():
-
     conn = get_db()
 
     users = conn.execute(
@@ -228,7 +228,7 @@ def admin_stats():
     ).fetchone()["count"]
 
     exercises = conn.execute(
-        "SELECT COUNT(*) AS count FROM exercise_completions"
+        "SELECT COUNT(*) AS count FROM exercises_completed"
     ).fetchone()["count"]
 
     conn.close()
@@ -244,50 +244,39 @@ def admin_stats():
 
 @app.get("/api/admin/users")
 def admin_users():
-
     conn = get_db()
 
-    users = conn.execute(
-        """
-        SELECT
-            id,
-            username,
-            xp,
-            level,
-            created_at
+    rows = conn.execute("""
+        SELECT id, username, xp, level, created_at
         FROM users
         ORDER BY xp DESC, id ASC
-        """
-    ).fetchall()
+    """).fetchall()
 
     conn.close()
 
-    return [dict(user) for user in users]
+    return [dict(row) for row in rows]
 
 
 @app.post("/api/admin/users/{user_id}/xp")
 def admin_add_xp(user_id: int, amount: int):
-
-    if amount < 0:
+    if amount <= 0:
         return {
             "success": False,
-            "message": "amount must be positive"
+            "error": "amount must be greater than zero"
         }
 
     conn = get_db()
 
     user = conn.execute(
-        "SELECT xp FROM users WHERE id = ?",
+        "SELECT id, xp FROM users WHERE id = ?",
         (user_id,)
     ).fetchone()
 
     if not user:
-
         conn.close()
-
         return {
             "success": False,
-            "message": "user not found"
+            "error": "user not found"
         }
 
     new_xp = user["xp"] + amount
@@ -314,11 +303,7 @@ def admin_add_xp(user_id: int, amount: int):
         level = 1
 
     conn.execute(
-        """
-        UPDATE users
-        SET xp = ?, level = ?
-        WHERE id = ?
-        """,
+        "UPDATE users SET xp = ?, level = ? WHERE id = ?",
         (new_xp, level, user_id)
     )
 
@@ -335,18 +320,14 @@ def admin_add_xp(user_id: int, amount: int):
 
 @app.get("/api/admin/achievements/{user_id}")
 def admin_user_achievements(user_id: int):
-
     conn = get_db()
 
-    rows = conn.execute(
-        """
-        SELECT achievement_key, unlocked_at
+    rows = conn.execute("""
+        SELECT *
         FROM achievements
         WHERE user_id = ?
-        ORDER BY unlocked_at DESC
-        """,
-        (user_id,)
-    ).fetchall()
+        ORDER BY id DESC
+    """, (user_id,)).fetchall()
 
     conn.close()
 
@@ -355,21 +336,26 @@ def admin_user_achievements(user_id: int):
 
 @app.get("/api/admin/activities/{user_id}")
 def admin_user_activities(user_id: int):
-
     conn = get_db()
 
-    rows = conn.execute(
-        """
-        SELECT text, created_at
-        FROM activities
+    templates = conn.execute("""
+        SELECT *
+        FROM template_usage
         WHERE user_id = ?
-        ORDER BY created_at DESC
-        LIMIT 50
-        """,
-        (user_id,)
-    ).fetchall()
+        ORDER BY id DESC
+    """, (user_id,)).fetchall()
+
+    exercises = conn.execute("""
+        SELECT *
+        FROM exercises_completed
+        WHERE user_id = ?
+        ORDER BY id DESC
+    """, (user_id,)).fetchall()
 
     conn.close()
 
-    return [dict(row) for row in rows]
+    return {
+        "templates": [dict(row) for row in templates],
+        "exercises": [dict(row) for row in exercises]
+    }
 

@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CapCut Academy — Admin Panel</title>
+
+<style>
+*{box-sizing:border-box}
+
+body{
+    margin:0;
+    font-family:Arial,Tahoma,sans-serif;
+    background:#0b0f19;
+    color:#fff;
+}
+
+.container{
+    width:min(1200px,94%);
+    margin:auto;
+    padding:25px 0 50px;
+}
+
+.header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:15px;
+    margin-bottom:25px;
+}
+
+.header h1{
+    margin:0;
+    font-size:26px;
+}
+
+.header p{
+    margin:7px 0 0;
+    color:#9ca3af;
+}
+
+button{
+    border:0;
+    border-radius:12px;
+    padding:11px 17px;
+    cursor:pointer;
+    font-weight:bold;
+    color:white;
+    background:#7c3aed;
+}
+
+button:hover{
+    opacity:.9;
+}
+
+.status{
+    padding:10px 14px;
+    border-radius:10px;
+    background:#151b2a;
+    color:#9ca3af;
+    margin-bottom:20px;
+}
+
+.status.online{
+    color:#4ade80;
+}
+
+.status.error{
+    color:#f87171;
+}
+
+.cards{
+    display:grid;
+    grid-template-columns:repeat(5,1fr);
+    gap:15px;
+    margin-bottom:25px;
+}
+
+.card{
+    background:#121827;
+    border:1px solid #20283a;
+    border-radius:16px;
+    padding:20px;
+}
+
+.card .icon{
+    font-size:25px;
+}
+
+.card .label{
+    color:#9ca3af;
+    margin-top:10px;
+    font-size:14px;
+}
+
+.card .value{
+    font-size:28px;
+    font-weight:bold;
+    margin-top:5px;
+}
+
+.panel{
+    background:#121827;
+    border:1px solid #20283a;
+    border-radius:18px;
+    padding:20px;
+    margin-bottom:20px;
+    overflow:hidden;
+}
+
+.panel h2{
+    margin-top:0;
+    font-size:20px;
+}
+
+.table-wrap{
+    overflow-x:auto;
+}
+
+table{
+    width:100%;
+    border-collapse:collapse;
+    min-width:650px;
+}
+
+th,td{
+    padding:13px 10px;
+    text-align:right;
+    border-bottom:1px solid #20283a;
+}
+
+th{
+    color:#9ca3af;
+    font-size:13px;
+}
+
+td{
+    font-size:14px;
+}
+
+.xp-box{
+    display:flex;
+    gap:7px;
+    align-items:center;
+}
+
+.xp-box input{
+    width:90px;
+    padding:9px;
+    border-radius:8px;
+    border:1px solid #30394d;
+    background:#0b0f19;
+    color:#fff;
+}
+
+.small-btn{
+    padding:8px 11px;
+    font-size:12px;
+}
+
+.empty{
+    text-align:center;
+    color:#9ca3af;
+    padding:25px;
+}
+
+@media(max-width:900px){
+    .cards{
+        grid-template-columns:repeat(2,1fr);
+    }
+}
+
+@media(max-width:550px){
+    .container{
+        width:92%;
+        padding-top:15px;
+    }
+
+    .header{
+        align-items:flex-start;
+        flex-direction:column;
+    }
+
+    .header h1{
+        font-size:22px;
+    }
+
+    .cards{
+        grid-template-columns:1fr 1fr;
+        gap:10px;
+    }
+
+    .card{
+        padding:15px;
+    }
+
+    .card .value{
+        font-size:23px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="header">
+        <div>
+            <h1>🛠️ CapCut Academy Admin</h1>
+            <p>مرکز مدیریت آکادمی</p>
+        </div>
+
+        <button onclick="loadAll()">🔄 بروزرسانی</button>
+    </div>
+
+    <div id="status" class="status">
+        در حال اتصال به Backend...
+    </div>
+
+    <section class="cards">
+
+        <div class="card">
+            <div class="icon">👥</div>
+            <div class="label">کاربران</div>
+            <div id="usersCount" class="value">—</div>
+        </div>
+
+        <div class="card">
+            <div class="icon">⭐</div>
+            <div class="label">مجموع XP</div>
+            <div id="xpCount" class="value">—</div>
+        </div>
+
+        <div class="card">
+            <div class="icon">🏆</div>
+            <div class="label">Achievement</div>
+            <div id="achievementCount" class="value">—</div>
+        </div>
+
+        <div class="card">
+            <div class="icon">🎬</div>
+            <div class="label">Template استفاده‌شده</div>
+            <div id="templateCount" class="value">—</div>
+        </div>
+
+        <div class="card">
+            <div class="icon">🎯</div>
+            <div class="label">تمرین تکمیل‌شده</div>
+            <div id="exerciseCount" class="value">—</div>
+        </div>
+
+    </section>
+
+    <section class="panel">
+
+        <h2>👥 کاربران</h2>
+
+        <div class="table-wrap">
+
+            <table>
+
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>کاربر</th>
+                        <th>XP</th>
+                        <th>Level</th>
+                        <th>تاریخ عضویت</th>
+                        <th>افزایش XP</th>
+                    </tr>
+                </thead>
+
+                <tbody id="usersTable">
+                    <tr>
+                        <td colspan="6" class="empty">
+                            در حال دریافت اطلاعات...
+                        </td>
+                    </tr>
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </section>
+
+</div>
+
+<script>
+
+const API = "http://127.0.0.1:8000";
+
+const statusBox = document.getElementById("status");
+
+function setStatus(message, type=""){
+    statusBox.textContent = message;
+    statusBox.className = "status " + type;
+}
+
+async function api(url, options={}){
+    const response = await fetch(API + url, options);
+
+    if(!response.ok){
+        throw new Error("HTTP " + response.status);
+    }
+
+    return response.json();
+}
+
+async function loadStats(){
+
+    const data = await api("/api/admin/stats");
+
+    document.getElementById("usersCount").textContent =
+        data.users ?? 0;
+
+    document.getElementById("xpCount").textContent =
+        data.total_xp ?? 0;
+
+    document.getElementById("achievementCount").textContent =
+        data.achievements ?? 0;
+
+    document.getElementById("templateCount").textContent =
+        data.templates_used ?? 0;
+
+    document.getElementById("exerciseCount").textContent =
+        data.exercises_completed ?? 0;
+}
+
+async function loadUsers(){
+
+    const users = await api("/api/admin/users");
+
+    const table = document.getElementById("usersTable");
+
+    if(!users.length){
+
+        table.innerHTML = `
+            <tr>
+                <td colspan="6" class="empty">
+                    هنوز کاربری وجود ندارد.
+                </td>
+            </tr>
+        `;
+
+        return;
+    }
+
+    table.innerHTML = users.map((user,index) => `
+
+        <tr>
+
+            <td>${index + 1}</td>
+
+            <td>
+                <strong>${escapeHtml(user.username)}</strong>
+            </td>
+
+            <td>${user.xp}</td>
+
+            <td>Level ${user.level}</td>
+
+            <td>${user.created_at || "-"}</td>
+
+            <td>
+
+                <div class="xp-box">
+
+                    <input
+                        id="xp-${user.id}"
+                        type="number"
+                        min="1"
+                        value="50"
+                    >
+
+                    <button
+                        class="small-btn"
+                        onclick="addXP(${user.id})"
+                    >
+                        +XP
+                    </button>
+
+                </div>
+
+            </td>
+
+        </tr>
+
+    `).join("");
+}
+
+async function addXP(userId){
+
+    const input = document.getElementById("xp-" + userId);
+
+    const amount = Number(input.value);
+
+    if(!amount || amount <= 0){
+        alert("مقدار XP معتبر نیست.");
+        return;
+    }
+
+    try{
+
+        await api(
+            `/api/admin/users/${userId}/xp?amount=${amount}`,
+            {method:"POST"}
+        );
+
+        setStatus("XP با موفقیت اضافه شد.", "online");
+
+        await loadAll();
+
+    }catch(error){
+
+        console.error(error);
+
+        setStatus(
+            "خطا هنگام اضافه کردن XP",
+            "error"
+        );
+    }
+}
+
+function escapeHtml(value){
+
+    return String(value)
+        .replaceAll("&","&amp;")
+        .replaceAll("<","&lt;")
+        .replaceAll(">","&gt;")
+        .replaceAll('"',"&quot;")
+        .replaceAll("'","&#039;");
+}
+
+async function loadAll(){
+
+    setStatus("در حال دریافت اطلاعات...");
+
+    try{
+
+        await Promise.all([
+            loadStats(),
+            loadUsers()
+        ]);
+
+        setStatus(
+            "🟢 اتصال به Backend برقرار است",
+            "online"
+        );
+
+    }catch(error){
+
+        console.error(error);
+
+        setStatus(
+            "🔴 اتصال به Backend برقرار نیست",
+            "error"
+        );
+
+        document.getElementById("usersTable").innerHTML = `
+            <tr>
+                <td colspan="6" class="empty">
+                    Backend را اجرا کنید و دوباره بروزرسانی کنید.
+                </td>
+            </tr>
+        `;
+    }
+}
+
+loadAll();
+
+</script>
+
+</body>
+</html>
